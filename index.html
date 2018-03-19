@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -85,6 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="陈权业的博客">
 <meta property="og:description" content="欢迎来到这里，这里有我分享的各种文章噢！">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="陈权业的博客">
 <meta name="twitter:description" content="欢迎来到这里，这里有我分享的各种文章噢！">
@@ -103,7 +104,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -123,7 +124,7 @@
 
 
 
-  <title>陈权业的博客</title>
+  <title>陈权业的博客--欢迎来到这里，这里有我分享的各种文章噢！</title>
   
 
 
@@ -135,7 +136,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -184,7 +185,37 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -194,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -260,9 +291,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-04T15:31:18+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T15:31:18+08:00">
                 2018-03-04
               </time>
             
@@ -326,6 +357,10 @@
 
     
 
+ <div>
+  
+</div>
+ 
     <footer class="post-footer">
       
 
@@ -388,9 +423,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-24T22:54:29+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T22:54:29+08:00">
                 2018-02-24
               </time>
             
@@ -429,16 +464,14 @@
 
       
         
-          
-            <h2 id="一、Eclipse和IntelliJ-IDEA应该如何选择呢？"><a href="#一、Eclipse和IntelliJ-IDEA应该如何选择呢？" class="headerlink" title="一、Eclipse和IntelliJ IDEA应该如何选择呢？"></a>一、Eclipse和IntelliJ IDEA应该如何选择呢？</h2><p>我的看法是：<br>这两个IDE开发出来的最初的目的不一样，Eclipse的目的是用来做一些创造性的工作——它拥有比较低的内存占用，不会随时随地地给出提示，让人脑有机会想出一些东西。做出IDEA的目的是为了让开发人员能够更加快速地开发出产品，这样就会让人们对创造性的简略程度越来越大。</p>
-<p>那么哪类人喜欢Eclipse，哪类人又喜欢IDEA呢？我的看法是，喜欢创作的人比较喜欢Eclipse，如喜欢写作的作者，喜欢创新出一些新技术和喜欢钻研代码的人比较喜欢Eclipse；喜欢IDEA类的人群一般都缺少创造性，他们会不断地重复着一些已经拥有的代码，就如上面所说，IDEA适合用来快速开发，既然是快速，也同时就会让人缺少些自主和创造性了。IDEA在短时间内能够产出大量的代码及软件，但是因为其中会缺乏思考，因此创造出来的大部分东西一般都是有Bug或者是不合格的代码产品，这就是高产但质量不好。<br>这也证实了自从Google将开发Android软件的IDE从Eclipse转向IDEA之后，二流和三流软件和第三方包也从此层出不穷的原因，这些二流、三流的软件和第三方开源包一般都存在极多的Bug，也导致了Android平台软件的质量（运行流畅程度的质量、动画和界面与界面之间的切换等方面）的明显下降。</p>
-<p>我更喜欢Eclipse，之前用过一段时间的IDEA开发安卓，感觉非常良好，但是经过一段时间后，我慢慢发现我写出来的代码质量都变得差了许多许多；最近我在学习JavaWeb开发，使用一段时间的Eclipse之后，感觉好多了，因为我感受到了编程的那种享受的感觉，很开心，一切都是像写文章一样行云流水，没有实时代码提示，打字和运行的流畅让我心情非常的舒畅。</p>
-<p>如果把IDE比作城市，代码比作鸡，那么IDEA就像在城市的工厂里产出的鸡群，产量大，但质量差很多；Eclipse像是在农村里面放养的鸡群，产量虽然少点，但是其色、香、味、嚼感都很好，营养也丰富很多。综合起来说，我更喜欢农村的鸡，我愿意花更多的时间和精力，来在农村养这种质量好的鸡。</p>
-<h2 id="二、安卓开发和JavaWeb开发的异同"><a href="#二、安卓开发和JavaWeb开发的异同" class="headerlink" title="二、安卓开发和JavaWeb开发的异同"></a>二、安卓开发和JavaWeb开发的异同</h2><p>我并不认为安卓开发和JavaWeb的开发有什么不同，只不过Google把安卓开发弄得更加复杂了一些，比如不用Json而是使用XML来做界面布局，这使得开发者得花很多时间和力气写很多重复的东西。<br>我非常不喜欢HTML和XML，因为他们需要写两个标签——开始和结束标签。我认为这是一种纯属浪费时间和力气的东西，还会使代码的观感变差。</p>
-<h2 id="三、它们的适用范围"><a href="#三、它们的适用范围" class="headerlink" title="三、它们的适用范围"></a>三、它们的适用范围</h2><p>IDEA也并不是很差，只是我认为它不适合用来用作那些有创造性的开发罢了，我发现它用来给初学者学习编程是一个非常好的工具，这样就能够大量减少他们的学习时间了。同时也是老师上课时使用的IDE的首选。<br>而Eclipse同时也是适合用来给初学者的非常好的工具，但是可能稍有些难度，学习时间会变得长些。</p>
-<p>以上观点纯属个人观点，也许有许多不对之处。</p>
-
-          
+          <h2 id="一、Eclipse和IntelliJ-IDEA应该如何选择呢？"><a href="#一、Eclipse和IntelliJ-IDEA应该如何选择呢？" class="headerlink" title="一、Eclipse和IntelliJ IDEA应该如何选择呢？"></a>一、Eclipse和IntelliJ IDEA应该如何选择呢？</h2><p>我的看法是：<br>这两个IDE开发出来的最初的目的不一样，Eclipse的目的是用来做一些创造性的工作——它拥有比较低的内存占用，不会随时随地地给出提示，让人脑有机会想出一些东西。做出IDEA的目的是为了让开发人员能够更加快速地开发出产品，这样就会让人们对创造性的简略程度越来越大。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/24/Eclipse和IntelliJ-IDEA/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -452,256 +485,10 @@
 
     
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
+ <div>
   
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-示分类" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/07/artical-title/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈权业">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈权业的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/07/artical-title/" itemprop="url">artical title</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-07T21:33:02+08:00">
-                2018-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>This is my first Blog…<br>How are you today?</p>
-<p>##现在你是否可好？##<br>我现在应该还行。</p>
-<p>这是我的博客，测试博客。</p>
-<p>写一段程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello,World"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>好了，我的第一个博客就写完了。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/07/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈权业">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈权业的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/07/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-07T21:02:24+08:00">
-                2018-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
+</div>
+ 
     <footer class="post-footer">
       
 
@@ -768,23 +555,14 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
 
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Tags</span>
-                
-              </div>
             
 
           </nav>
@@ -797,20 +575,6 @@
           
 
           
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.quanye.xyz" title="QuanyeChen����ҳ" target="_blank">QuanyeChen����ҳ</a>
-                  </li>
-                
-              </ul>
-            </div>
           
 
           
@@ -832,7 +596,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -840,18 +604,8 @@
 
   
 </div>
-
-
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
+<a href="http://www.quanye.xyz">作者首页</a>，
+<a href="https://github.com/aizichen">GitHub</a>
 
 
 

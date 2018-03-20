@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML 5 的组件基础    标题1 标题2 标题3 标题4 标题5 标题6      TomcatJettyResin    TomcatJettyResin   TomcatJettyResin       ————————————————————————————- 加粗文本斜体文本加粗斜体文本被强调的文本 大号字体文本 粗体文本小字号文本普通文本上标文本普通文本下标粗体文本从左向右排列的文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5组件基础">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/HTML5组件基础/index.html">
+<meta property="og:site_name" content="陈权业的博客">
+<meta property="og:description" content="HTML 5 的组件基础    标题1 标题2 标题3 标题4 标题5 标题6      TomcatJettyResin    TomcatJettyResin   TomcatJettyResin       ————————————————————————————- 加粗文本斜体文本加粗斜体文本被强调的文本 大号字体文本 粗体文本小字号文本普通文本上标文本普通文本下标粗体文本从左向右排列的文">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+<meta property="og:updated_time" content="2018-03-20T05:53:13.578Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5组件基础">
+<meta name="twitter:description" content="HTML 5 的组件基础    标题1 标题2 标题3 标题4 标题5 标题6      TomcatJettyResin    TomcatJettyResin   TomcatJettyResin       ————————————————————————————- 加粗文本斜体文本加粗斜体文本被强调的文本 大号字体文本 粗体文本小字号文本普通文本上标文本普通文本下标粗体文本从左向右排列的文">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/20/HTML5组件基础/images/cutecat.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/HTML5组件基础/"/>
+
+
+
+
+
+  <title>HTML5组件基础 | 陈权业的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈权业的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/HTML5组件基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈权业">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈权业的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5组件基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T13:52:59+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 style="text-align: center;"><mark>HTML 5 的组件基础</mark></h2>
+
+
+<p><hr><br><!-- 采用标题一到标题六来输出文本 --></p>
+<p></p><h1>标题1</h1><p></p>
+<p></p><h2>标题2</h2><p></p>
+<p></p><h3>标题3</h3><p></p>
+<p></p><h4>标题4</h4><p></p>
+<p></p><h5>标题5</h5><p></p>
+<h6>标题6</h6>
+
+<!-- 输出一条水平线 -->
+<hr>
+
+<!-- 使用三个span定义三节 -->
+<p><span>Tomcat</span><br><span>Jetty</span><br><span>Resin</span></p>
+<!-- 输出换行 -->
+<p><br></p>
+<!-- 使用三个div定义三个节 -->
+<div>Tomcat</div><br><div>Jetty</div><br><div>Resin</div>
+
+<!-- 使用三个p定义三个段落 -->
+<p>Tomcat</p><br><p>Jetty</p><br><p>Resin</p>
+
+<p><hr></p>
+<p><hr></p>
+<hr>
+
+
+<p>————————————————————————————-<br></p>
+<p><span><b>加粗文本</b></span><br><br><span><i>斜体文本</i></span><br><br><span><b><i>加粗斜体文本</i></b></span><br><br><span><em>被强调的文本</em></span><br></p>
+<p><big><span>大号字体文本</span></big><br></p>
+<p><strong>粗体文本</strong></p><br><br><small><span>小字号文本</span></small><br><br><div>普通文本<sup>上标文本</sup></div><br><br><span>普通文本<strong><sub>下标粗体文本</sub></strong></span><br><br><!-- 指定文本从左向右（正常情况）排列 --><br><bdo dir="ltr">从左向右排列的文本</bdo><br><br><!-- 指定文本从右向左排列 --><br><bdo dir="rtl">从右向左排列的文本</bdo><br><br><hr><br><hr><br><hr><br><br><br>————————————————————————————-<br><br><br><!-- 使用q表示一段短的引用文本 --><br><p>疯狂Java的精神是<q cite="http://www.fkjava.org">疯狂源自梦想，技术成就辉煌</q><br>这也是所有疯狂Java程序员的精神。</p><br><div><br>    <!-- 使用blockquote表示一段长的引用文本 --><br>    <blockquote><br>    锦瑟无端五十弦，一弦一柱思年华。<br><br>    庄生晓梦迷蝴蝶，望帝春心托杜鹃。<br><br>    沧海月明珠有泪，蓝田日暖玉生烟。<br><br>    此情可待成追忆，只是当时已惘然。<br>    </blockquote><br>    是唐朝诗人李商隐的代表作，诗中隐藏着一种淡淡的忧伤，让人无法言说，但又无以遣怀。<br></div><br><br><p><br>    <cite>《芙蓉镇》</cite>、<br>    <cite>《蓝风筝》</cite><br>    是国内导演拍摄的最有思考深度的两部电影。<br></p>
+
+<p><br>    下面的代码定义了一个Java类：<br><br>    <code><br>        public class Cat<br><br>        {<br><br>            private int name = “garfield”;<br><br>        }<br><br>    </code><br></p>
+
+<!-- pre元素包含的内容是“预格式化”文本 -->
+<pre>
+    public class Cat
+    {
+
+        private int name = "garfield";
+
+    }
+</pre>
+
+<p></p>
+<p><br><br><!-- 使用abbr定义缩写 --><br>疯狂Java教育中心的缩写是<abbr title="疯狂Java教育">fkJava</abbr><br><br><!-- 使用address定义地址 --><br>疯狂软件教育中心的地址是<address>广州天河区陂大岗路4号沣宏大厦3006-3001号</address><br><!-- 使用dfn定义专业术语 --><br></p><p><br>    <dfn>HTML</dfn>是一种广为人知的标记语言。<br></p>
+
+<p><br>    可通过输入如下命令：<br><br>    <kbd>list -l</kbd><br><br>    在Linux的Shell窗口中查看当前目录下所有的文件和目录的详细信息。<br></p>
+
+<p><br>    如果您在阅读疯狂Java体系图书时，遇到有任何无法解决的技术问题，<br><br>    请登录www.fkjava.org发帖提问，可按如下示例内容发帖：<br><br>    <!-- 使用samp定义示范文本内容 --><br>    <samp><br>        我在阅读XXX图书的第X章、第X节时，遇到一个XXX问题，<br><br>    </samp><br>    错误提示信息是：XXX。<br></p>
+
+<pre><code>&lt;!-- 使用var定义变量 --&gt;
+&lt;var&gt;i&lt;/var&gt;、&lt;var&gt;j&lt;/var&gt;、&lt;var&gt;k&lt;/var&gt;通常用于作为循环计数器变量。
+&lt;!-- 使用del和ins表示修订 --&gt;
+&lt;p&gt;
+    Android是一个
+    &lt;del&gt;开发&lt;/del&gt;
+    &lt;ins&gt;开放&lt;/ins&gt;
+    式的手机、平板电脑操作系统。
+&lt;/p&gt;
+</code></pre><p></p><p></p>
+<p><hr></p>
+<p><hr></p>
+<hr>
+
+
+<p>————————————————————-<br><br><!-- 超链接和锚点 --><br><!-- 在本窗口口打开另一个资源 --><br><a href="http://www.crazyit.org" target="_blank" rel="noopener"><b>疯狂Java联盟</b></a><br><br><!-- 在新窗口中打开另一个资源 --><br><a href="http://www.crazyit.org" target="_blank"><em>疯狂Java联盟</em></a><br><br><!-- 为图像增加超链接 --><br><a href="http://www.crazyit.org" target="_blank" rel="noopener"><img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" alt="疯狂Java联盟"></a><br><br><!-- 基于相对路径指定另一个资源 --><br><a href="text.html">文本格式化标签</a></p>
+<p><hr></p>
+<p><hr></p>
+<hr>
+
+
+<p>==============================================================<br><br><!-- 定义无序列表 --></p>
+<p><ul><br>    <li>疯狂Java讲义</li><br>    <li>轻量级Java EE企业应用实战</li><br>    <li>疯狂Android讲义</li><br></ul><br><!-- 定义有序列表 --></p>
+<p><ol start="2" type="I"><br>    <li>疯狂Java讲义</li><br>    <li>轻量级Java EE企业应用实战</li><br>    <li>疯狂Android讲义</li><br></ol><br><!-- 定义列表 --></p>
+<dl><br>    <!-- 定义标题列表项 --><br>    <dt>疯狂Java体系</dt><br>    <dd>疯狂Java讲义</dd><br>    <dd>轻量级Java EE企业应用实战</dd><br>    <dd>疯狂Android讲义</dd><br>    <!-- 定义标题列表项 --><br>    <dt>作者其他图书</dt><br>    <dd>Struts 2.1 权威指南</dd><br>    <dd>基于J2EE的Ajax宝典</dd><br></dl>
+
+<p><hr></p>
+<p><hr></p>
+<hr>
+
+
+<p>================================================<br><br><img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" alt="可爱的小猫"><br><br><!-- 定义图片，指定高、宽 --><br><img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" alt="可爱的小猫" width="300" height="120"><br><br><!-- 定义图片，使用指定的图片映射 --><br><img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" width="300" height="120" border="0" usemap="#test" alt="可爱的小猫"><br><br><!-- 定义图片映射 --></p>
+<map name="test" id="test"><br>    <!-- 为该图片映射定义2个区域 --><br>    <area shape="circle" coords="57, 55, 25" href="http://www.leegang.org" alt="leegang.org"><br>    <area shape="poly" coords="188, 28, 50, 200, 74, 246, 51" href="http://www.crazyit.org" alt="crazyit.org"><br></map>
+
+
+<p><hr></p>
+<p><hr></p>
+<hr>
+
+
+
+<p>==================================================<br><br><!-- 普通表格，指定宽度、边框大小 --></p>
+<table style="width: 400px" border="1"><br>    <caption><br>        <b>疯狂Java体系图书</b><br>    </caption><br>    <tr><br>        <th>书名</th><br>        <th>作者</th><br>    </tr><br>    <tr><br>        <td>轻量级Java EE企业应用实战</td><br>        <td>李刚</td><br>    </tr><br></table>
+
+<!-- 定义一个跨行、跨列的表格 -->
+<table style="width: 240px" border="1"><br>    <caption><br>        <b>跨行、跨列的表格</b><br>    </caption><br>    <tr><br>        <td rowspan="2">跨2行的单元格</td><br>        <td>普通单元格</td><br>    </tr><br>    <tr><br>        <td>普通单元格</td><br>    </tr><br>    <tr><br>        <td colspan="2">跨2列的单元格</td><br>    </tr><br>    <tr><br>        <td>普通单元格</td><br>        <td>普通单元格</td><br>    </tr><br></table>
+
+<!-- thead,tbody和tfoot元素 -->
+<table border="1" style="width: 400px"><br>    <caption><br>        <b>疯狂Java体系图书</b><br>    </caption><br>    <thead><br>        <tr>书名</tr><br>        <tr>作者</tr><br>    </thead><br>    <tfoot><br>        <tr><br>            <td colspan="2" style="text-align: right">现总计：2本图书</td><br>        </tr><br>    </tfoot><br>    <tbody><br>        <tr><br>            <td>疯狂Java讲义</td><br>            <td>李刚</td><br>        </tr><br>        <tr><br>            <td>轻量级Java EE企业应用实战</td><br>            <td>李刚</td><br>        </tr><br>    </tbody><br></table>
+
+
+<!-- 定义表格的整体指定属性 -->
+<table style="background-color: black; border-collapse: separate; border-spacing: 1px"><br>    <caption><em><b>疯狂Java体系书籍</b></em></caption><br>    <!-- 定义所有列的背景色都为白色 --><br>    <colgroup style="background-color: white;"><br>        <!-- 设置第一列宽160px --><br>        <col style="width: 160px"><br>        <!-- 定义横跨两列，设置这两列各宽100px --><br>        <col span="2" style="width: 100px"><br>    </colgroup><br><br>    <thead><br>        <tr><br>            <th>书名<br>            </th><th>作者<br>            </th><th>价格<br>        </th></tr><br>    </thead><br>    <tfoot><br>        <tr><br>            <td colspan="3" style="text-align: right">现总计：2本图书</td><br>        </tr><br>    </tfoot><br>    <tbody><br>        <tr><br>            <td>疯狂Java讲义</td><br>            <td>李刚</td><br>            <td>109</td><br>        </tr><br>    </tbody><br>    <!-- 不使用tbody标签，但是默认会显示在tbody表格中 --><br>    <tr><br>        <td>轻量级JavaEE企业应用实战</td><br>        <td>李刚</td><br>        <td>89</td><br>    </tr><br></table>
+
+
+<p><hr></p>
+<p><hr></p>
+<p><hr><br>============================================================<br></p>
+<!-- 框架相关元素 -->
+<p><b>主页内容</b><br></p>
+<iframe src="images/cutecat.jpg" width="200" height="120"></iframe>
+
+
+<p><hr></p>
+<p><hr></p>
+<p><hr><br>============================================================<br></p>
+<!-- contentEdiable属性 -->
+<div contentediable="true" style="width: 500px; border: 1px solid black"><br>    <caption><b>疯狂Java讲义</b><caption><br>    <!-- 该元素的父元素有contentEdiable="ture"，因此该表格也是可编辑的 --><br>    <table style="width: 420px; border-collapse: collapse" border="1px"><br>        <tr><br>            <td>疯狂Java讲义</td><br>            <td>疯狂Android讲义</td><br>        </tr><br>        <tr><br>            <td>轻量级Java EE企业应用实战</td><br>            <td>经典Java EE企业应用实战</td><br>        </tr><br>    </table><br></caption></caption></div>
+
+<!-- 这个表格默认是不可编辑的，
+    双击之后该表格变为可编辑状态 -->
+<table id="target" ondblclick="this.contentEdiable=true;" style="width: 420px; border-collapse: collapse" border="1"><br>    <tr><br>        <td>Java</td><br>        <td>Ruby</td><br>    </tr><br>    <tr><br>        <td>C/C++</td><br>        <td>Python</td><br>    </tr><br></table>
+
+<p><hr></p>
+<p><hr></p>
+<p><hr><br>============================================================<br></p>
+<!-- hidden属性 -->
+<p><div id="target" hidden="true" style="height: 80px">文字内容</div></p>
+<p><button onclick="var target = document.getElementById('target'); target.hidden = !target.hidden;"><br>    显示/隐藏<br></button><br><br></p>
+<!-- spellcheck属性，支持的浏览器只有Chrome,Opera和Safari -->
+<textarea spellcheck="true" rows="3" cols="40"><br></textarea>
+
+<p><hr></p>
+<p><hr></p>
+<p><hr><br>============================================================<br></p>
+<!-- 文档结构元素 -->
+<article><br>    <!-- 帖子的头部 --><br>    <header><br>        <h1>学习Android，必须先学习Java吗？</h1><br>        <div>作者：crazystu</div><br>    </header><br></article><br><p><br>    学习Android，必须先学习Java吗？<br>    Android上的应用程序只能用Java编写吗？可以用C++吗？<br></p><br><br><!-- 帖子的回复部分，用section元素表示 --><br><section><br>    <!-- 每个article代表一个回复 --><br>    <article><br>        <!-- 回复的头部 --><br>        <header><br>            <h2>还是还得学习Java</h2><br>            <div>作者：kongyeeku</div><br>        </header><br>        <p><br>            虽然Android不一定要使用Java开发，还可以选择JavaScript<br><br>            或NDK开发，但Java毕竟是Android主要的开发语言，<br><br>            因此建议学习Android之前还是先学习Java。<br>        </p><br>    </article><br>    <!-- 每个article代表一个回复 --><br>    <article><br>        <!-- 回复的头部 --><br>        <header><br>            <h2>Java是基础</h2><br>            <div>作者：kuan008</div><br>        </header><br>        <p>Java是基础，学好Java再去学习Android事半功倍。</p><br>    </article>
+
+<pre><code>&lt;!-- 帖子的脚注 --&gt;
+&lt;footer&gt;
+    以上帖子和回复只代表其个人观点，不代表疯狂Java联盟的观点或立场。
+&lt;/footer&gt;
+</code></pre><p></p></section><p></p>
+<!-- 该aside放在article内部，将作为该文章的“边栏”信息 -->
+<aside><br>    <h3>关于楼主</h3><br>    <section><br>        <div>用户组：编程摸索组</div><br>        <div>注册日期：2009-7-27</div><br>        <div>上次访问：2012031321</div><br>        <div>最后发表：2012-1-1</div><br>        <div>发帖数级别：小试牛刀</div><br>        <div>阅读权限：30</div><br>    </section><br></aside><br><!-- 该aside放在body内部，将作为整个HTML文档的“边栏”信息 --><br><aside><br>    <h3>页面导航</h3><br>    <nav><br>        <ul><br>            <li><a href="#">查看相关内容</a></li><br>            <li><a href="http://www.crazyit.org" target="_blank" rel="noopener">返回首页</a></li><br>            <li><a href="http://www.crazyit.org/forum-63-1.html" target="_blank" rel="noopener">返回本版</a></li><br>        </ul><br>    </nav><br></aside>
+
+<!-- 使用figure元素定义一块“图片区域” -->
+<figure style="border: 2px solid black; padding: 5px; width: 500px"><br>    <figcaption><b>我喜欢的3只小猫</b></figcaption><br>    <img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" alt="可爱的小猫"><br>    <img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" alt="可爱的小猫"><br>    <img src="/2018/03/20/HTML5组件基础/images/cutecat.jpg" alt="可爱的小猫"><br></figure>
+
+
+<p><hr></p>
+<p><hr></p>
+<p><hr><br>============================================================<br></p>
+<!-- 语义相关元素 -->
+<article><br>    <header><br>        <h2><br>            疯狂软件即将进入<br>            <mark>HTML 5</mark><br>            相关课程<br>        </h2><br>    </header><br>    <p><br>        <mark>HTML 5</mark>是下一代的HTML规范，<br><br>        <mark>HTML 5</mark>即将把前端开发者从繁重的开发中解放出来。<br><br>        为了把握技术潮流的脉搏，疯狂软件教育计划在<br>        <time datetime="2012-04-01">2014年4月1日</time><br>        引入<mark>HTML 5</mark>的相关课程。<br><br>        疯狂软件教育的上课时间是<time datetime="09:00">上午9点</time><br>        到<time datetime="17:30">下午5点半</time><br><br>        疯狂软件将于龙年的<time datetime="2012-01-30T09:00">下月初八</time><br>        开始上班，也就是<time>2012-01-30</time><br>    </p><br></article>
+
+<p><hr></p>
+<p><hr></p>
+<p><hr><br>============================================================<br></p>
+<!-- 两种进度条 -->
+<p>当前的车速是：</p>
+<p><meter value="120" min="0" max="220" low="0" high="160"><br>    120<br></meter><br>千米/小时。<br><br>任务完成比：<progress value="30" max="100">30/100</progress></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+ <div>
+  
+    ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束<i class="fa fa-heart"></i>感谢阅读------</div>
+    
+</div>
+  
+</div>
+ 
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/20/表单元素和属性/" rel="next" title="表单元素和属性">
+                <i class="fa fa-chevron-left"></i> 表单元素和属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">陈权业</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到这里，这里有我分享的各种文章噢！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">HTML 5 的组件基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">标题1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">标题2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">标题3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">标题4</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">标题5</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">标题6</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">学习Android，必须先学习Java吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">还是还得学习Java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Java是基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">关于楼主</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">页面导航</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">            疯狂软件即将进入            HTML 5            相关课程        </span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈权业</span>
+
+  
+</div>
+<a href="http://www.quanye.xyz">作者首页</a>，
+<a href="https://github.com/aizichen">GitHub</a>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

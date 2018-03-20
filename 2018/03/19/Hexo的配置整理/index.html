@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="陈权业的博客">
 <meta property="og:description" content="Hexo 简介Hexo是一个使用Mardown格式，使用github pages为服务基础，视觉可完全定制化的静态博客系统。 安装和使用Hexo一、在github上创建自己的github pages 创建自己的github帐户，登录github主页：https://github.com 进行帐号注册; 进入github帐户，创建一个repository，在repository name中填写你注册">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T01:46:42.741Z">
+<meta property="og:updated_time" content="2018-03-20T02:29:18.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo的配置整理">
 <meta name="twitter:description" content="Hexo 简介Hexo是一个使用Mardown格式，使用github pages为服务基础，视觉可完全定制化的静态博客系统。 安装和使用Hexo一、在github上创建自己的github pages 创建自己的github帐户，登录github主页：https://github.com 进行帐号注册; 进入github帐户，创建一个repository，在repository name中填写你注册">
@@ -363,14 +363,36 @@
 </ol>
 <h3 id="五、修改博客，然后使用hexo命令提交到github-pages"><a href="#五、修改博客，然后使用hexo命令提交到github-pages" class="headerlink" title="五、修改博客，然后使用hexo命令提交到github pages"></a>五、修改博客，然后使用hexo命令提交到github pages</h3><ol>
 <li>由于Hexo博客系统使用的博客条目的编辑格式是markdown，所以可以使用任何的无格式文本编辑器来编写，markdown具有使用简单、方便、美观和易于学习的特点；</li>
-<li>修改博客：打开”MyBlog/source/_posts”路径下的某个已经新建了的博客，使用普通无格式文本编辑器或都专用的markdown编辑器进行打开它，输入你想要的内容，然后进行保存；</li>
+<li>修改博客：打开”MyBlog/source/_posts”路径下的某个已经新建了的博客，使用普通无格式文本编辑器或都专用的markdown编辑器进行打开它，输入你想要的内容，然后进行保存；<br>3.进行Hexo的git配置：打开MyBlog目录下的”_config.yml”文件，在#Deployment下面的repo和branch修改为：<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">	<span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">	<span class="attr">repo:</span> <span class="string">git@github.com:[用户名]/[用户名].github.io.git</span></span><br><span class="line">	<span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将[用户名]改为你的github用户名即可。</p>
+<ol>
 <li><p>提交新增或修改过的博客到github pages：打开命令行，进入MyBlog路径，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>等待Hexo对md文件进行解析，完成后用浏览器访问你的github pages就可以看到效果了：<a href="http://[用户名].github.io，例如我的github" target="_blank" rel="noopener">http://[用户名].github.io，例如我的github</a> pages的地址是：<a href="http://aizichen.github.io" title="http://aizichen.github.io" target="_blank" rel="noopener">http://aizichen.github.io</a></p>
 </li>
 </ol>
-<h2 id="Hexo的配置"><a href="#Hexo的配置" class="headerlink" title="Hexo的配置"></a>Hexo的配置</h2><h3 id="一、主题配置"><a href="#一、主题配置" class="headerlink" title="一、主题配置"></a>一、主题配置</h3>
+<h2 id="Hexo的配置"><a href="#Hexo的配置" class="headerlink" title="Hexo的配置"></a>Hexo的配置</h2><h3 id="一、博客的基本配置"><a href="#一、博客的基本配置" class="headerlink" title="一、博客的基本配置"></a>一、博客的基本配置</h3><ol>
+<li>用文件浏览器进入MyBlog目录，在此目录下有一个文件”config.yml”，用文本编辑器打开它，你就可以在里面进行相应的设置了。</li>
+</ol>
+<h3 id="二、主题的安装"><a href="#二、主题的安装" class="headerlink" title="二、主题的安装"></a>二、主题的安装</h3><ol>
+<li>安装主题，进入Hexo官网主题区：<a href="https://hexo.io/themes/" title="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 进行一个主题选择。这里博主选择了一个Next主题，它的github地址是：<a href="https://github.com/iissnan/hexo-theme-next" title="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a>。</li>
+<li><p>进入命令行，然后进行MyBlog目录下输入以下命令对其进行下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置Hexo的默认主题为Next：用文件浏览器进入MyBlog目录，在此目录下有一个文件”config.yml”，用文本编辑器打开它，找到:</p>
+<figure class="highlight plain"><figcaption><span>landscape```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">然后把它改成:</span><br><span class="line">```theme: next</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Next主题就被启动了，接着提交博客到github page就可以看到效果了。</p>
+<h3 id="三、主题的通用配置"><a href="#三、主题的通用配置" class="headerlink" title="三、主题的通用配置"></a>三、主题的通用配置</h3><p>由于各个主题的配置基本通用，因此我在这里讲解Next主题的配置就可以了。</p>
+<ol>
+<li>进入MyBlog/themes/Next路径下；</li>
+<li>打开”_config.yml”即可对Next主题进行通用级别的设置。</li>
+</ol>
+<h3 id="四、主题的细节配置"><a href="#四、主题的细节配置" class="headerlink" title="四、主题的细节配置"></a>四、主题的细节配置</h3>
       
     </div>
     
@@ -556,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-简介"><span class="nav-number">1.</span> <span class="nav-text">Hexo 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和使用Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装和使用Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、在github上创建自己的github-pages"><span class="nav-number">2.1.</span> <span class="nav-text">一、在github上创建自己的github pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、下载并安装node-js和git版本管理软件"><span class="nav-number">2.2.</span> <span class="nav-text">二、下载并安装node.js和git版本管理软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、使用node-js提供的npm包管理工具下载并安装hexo"><span class="nav-number">2.3.</span> <span class="nav-text">三、使用node.js提供的npm包管理工具下载并安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、初始化并创建一个新的博客"><span class="nav-number">2.4.</span> <span class="nav-text">四、初始化并创建一个新的博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、修改博客，然后使用hexo命令提交到github-pages"><span class="nav-number">2.5.</span> <span class="nav-text">五、修改博客，然后使用hexo命令提交到github pages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo的配置"><span class="nav-number">3.</span> <span class="nav-text">Hexo的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、主题配置"><span class="nav-number">3.1.</span> <span class="nav-text">一、主题配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-简介"><span class="nav-number">1.</span> <span class="nav-text">Hexo 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和使用Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装和使用Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、在github上创建自己的github-pages"><span class="nav-number">2.1.</span> <span class="nav-text">一、在github上创建自己的github pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、下载并安装node-js和git版本管理软件"><span class="nav-number">2.2.</span> <span class="nav-text">二、下载并安装node.js和git版本管理软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、使用node-js提供的npm包管理工具下载并安装hexo"><span class="nav-number">2.3.</span> <span class="nav-text">三、使用node.js提供的npm包管理工具下载并安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、初始化并创建一个新的博客"><span class="nav-number">2.4.</span> <span class="nav-text">四、初始化并创建一个新的博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、修改博客，然后使用hexo命令提交到github-pages"><span class="nav-number">2.5.</span> <span class="nav-text">五、修改博客，然后使用hexo命令提交到github pages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo的配置"><span class="nav-number">3.</span> <span class="nav-text">Hexo的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、博客的基本配置"><span class="nav-number">3.1.</span> <span class="nav-text">一、博客的基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、主题的安装"><span class="nav-number">3.2.</span> <span class="nav-text">二、主题的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、主题的通用配置"><span class="nav-number">3.3.</span> <span class="nav-text">三、主题的通用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、主题的细节配置"><span class="nav-number">3.4.</span> <span class="nav-text">四、主题的细节配置</span></a></li></ol></li></ol></div>
             
 
           </div>

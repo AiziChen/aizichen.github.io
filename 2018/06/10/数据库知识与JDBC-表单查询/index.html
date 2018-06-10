@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="欢迎来到这里，这里有我分享的各种文章噢！">
+<meta name="description" content="关系型数据库的表单查询主要的关键字为”select”，该语句是SQL中功能最丰富的语句。它不仅可以执行单个表单的查询，还支持多表连接查询。">
 <meta name="keywords" content="数据库,JDBC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;数据库知识与JDBC-表单查询&#39;">
 <meta property="og:url" content="http://yoursite.com/2018/06/10/数据库知识与JDBC-表单查询/index.html">
 <meta property="og:site_name" content="陈权业的博客">
-<meta property="og:description" content="欢迎来到这里，这里有我分享的各种文章噢！">
+<meta property="og:description" content="关系型数据库的表单查询主要的关键字为”select”，该语句是SQL中功能最丰富的语句。它不仅可以执行单个表单的查询，还支持多表连接查询。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-10T01:16:49.477Z">
+<meta property="og:updated_time" content="2018-06-10T05:53:36.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;数据库知识与JDBC-表单查询&#39;">
-<meta name="twitter:description" content="欢迎来到这里，这里有我分享的各种文章噢！">
+<meta name="twitter:description" content="关系型数据库的表单查询主要的关键字为”select”，该语句是SQL中功能最丰富的语句。它不仅可以执行单个表单的查询，还支持多表连接查询。">
 
 
 
@@ -352,7 +352,26 @@
       
 
       
-        
+        <p>关系型数据库的表单查询主要的关键字为”select”，该语句是SQL中功能最丰富的语句。它不仅可以执行单个表单的查询，还支持多表连接查询。<a id="more"></a></p>
+<h2 id="一-基本用法"><a href="#一-基本用法" class="headerlink" title="一. 基本用法"></a>一. 基本用法</h2><p>“select”表单查询的本质是从一个或多个数据表中选出特定行和特定列的交集，它的基本语法为：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> */[列<span class="number">1</span>,列<span class="number">2</span>, ...]</span><br><span class="line"><span class="keyword">from</span> [表名]</span><br><span class="line">[<span class="keyword">where</span> 语句];</span><br></pre></td></tr></table></figure></p>
+<p>其中的”*”代表要查询的表中所有的列，”from [表名]”则表示“从哪个表中查询”,”where语句”是可选的，它是给定某些条件语句，来做有条件的查询操作。<br>例如查询user表中所有的数据：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure></p>
+<p>查询user表中指定的列的数据，并查询id为1所有的行的数据：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二-算术表达式支持"><a href="#二-算术表达式支持" class="headerlink" title="二. 算术表达式支持"></a>二. 算术表达式支持</h2><p>select表单查询语句支持算术表达式。它可以存在于select和from之间，也可以在where语句中使用。</p>
+<ol>
+<li><p>在where语句中使用：<br>例如查询user表中id小于3的行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> &lt; <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在select 和 from之间使用：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>*<span class="number">2</span>, <span class="number">3</span>/<span class="number">2</span>, <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> &gt; <span class="number">2</span>*<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>select中的算术表达式不仅仅只支持数值型的数据类型的计算，还支持以下几种数据类型：</p>
+<ul>
+<li>对于日期类型的数据，可以使用（＋，－）法进行日期的相加／相减计算；</li>
+<li>运算符不仅可以在列和常量/变量之间进行计算，还可以在两列之间进行计算。</li>
+</ul>
+<p>例如下面的语句，它对不同的数据类型进行了相应的算术操作：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -454,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -515,6 +543,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-基本用法"><span class="nav-number">1.</span> <span class="nav-text">一. 基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-算术表达式支持"><span class="nav-number">2.</span> <span class="nav-text">二. 算术表达式支持</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

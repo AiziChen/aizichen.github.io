@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="陈权业的博客">
 <meta property="og:description" content="数据库约束广义的功能定义：数据库约束的功能是保证数据库中表中数据的完整性。狭义的定义：在建表或者修改表时，为数据表中的数据列规定某些规则，以保证表中的数据列能按规定的规则进行存储,这可以让存入的数据规定在某些规则之内，避免了存入的数据不是预期的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-10T00:33:46.963Z">
+<meta property="og:updated_time" content="2018-06-10T05:31:28.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;数据库知识与JDBC-数据库约束&#39;">
 <meta name="twitter:description" content="数据库约束广义的功能定义：数据库约束的功能是保证数据库中表中数据的完整性。狭义的定义：在建表或者修改表时，为数据表中的数据列规定某些规则，以保证表中的数据列能按规定的规则进行存储,这可以让存入的数据规定在某些规则之内，避免了存入的数据不是预期的。">
@@ -355,7 +355,33 @@
         <p>数据库约束广义的功能定义：数据库约束的功能是保证数据库中表中数据的完整性。<br>狭义的定义：在建表或者修改表时，为数据表中的数据列规定某些规则，以保证表中的数据列能按规定的规则进行存储,这可以让存入的数据规定在某些规则之内，避免了存入的数据不是预期的。<a id="more"></a></p>
 <p>关系型数据库的数据库约束有以下几种：<br>NOT NULL约束： 指定某列不能为NULL。<br>UNIQUE约束： 指定某列或多列不能存在相同值。<br>PRIMARY KEY约束： 主键，把某列作为唯一标识，意思就是该列具有唯一值；和UNIQUE约束相同，不过该约束只是一个键，而UNIQUE则是一个值。<br>FOREIGN KEY约束： 外键，索引其它表的键。这个其它表术语称为从表或子表。<br>CHECK约束： 用于指定对应列的值必需满足该约束，MySQL没有此约束，在MySQL中使用此约束也不会生效。</p>
 <p>*数据库约束可以为单列指定约束，也可以为多个列指定约束；同时只能在建表或者修改表的时候指定约束。</p>
-<p>1.</p>
+<h2 id="一-NOT-NULL约束"><a href="#一-NOT-NULL约束" class="headerlink" title="一.NOT NULL约束"></a>一.NOT NULL约束</h2><p>“非空约束”<br>SQL中NULL具有如下特点：</p>
+<ul>
+<li>所有数据类型的值都可以为NULL；</li>
+<li>与Java类似，空字符串和0都不是NULL。</li>
+</ul>
+<p>*指定该约束有两种方式：创建表时指定和使用alter table语法来修改。</p>
+<ol>
+<li><p>创建表时指定——指定NOT NULL约束时只需要在定义列时在其后面添加NOT NULL即可：<br>创建一个user表，为id指定NOT NULL约束：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span> (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"># 使用<span class="keyword">default</span> 为该列指定默认值</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">25</span>) <span class="keyword">default</span> <span class="string">'DavidChen'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用alter table来修改<br>修改user表，为name也指定NOT NULL约束：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">modify</span> <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">25</span>) <span class="keyword">default</span> <span class="string">'DavidChen'</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：在MySQL中，创建表时若不指定NOT NULL约束，默认可为NULL。</p>
+<h2 id="二-UNIQUE约束"><a href="#二-UNIQUE约束" class="headerlink" title="二. UNIQUE约束"></a>二. UNIQUE约束</h2><p>“唯一约束”<br>UNIQUE约束用于保证指定的列或列组合不允许出现重复的值（NULL除外，在关系型数据库中NULL之间并不相等）。<br>定义UNIQUE约束的方式有两种：</p>
+<ol>
+<li><p>列级约束定义方式<br>创建一个world表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> world (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">125</span>) <span class="keyword">unique</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表级约束定义方式<br>表级约束的语法为：</p>
+<blockquote>
+<p>constraint [约束名] 约束定义</p>
+</blockquote>
+</li>
+</ol>
+<p>创建一个clazz表：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> clazz (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">code <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">default</span> <span class="string">'100'</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">125</span>),</span><br><span class="line"># 使用表级约束语法建立唯一约束</span><br><span class="line"><span class="keyword">unique</span>(code),</span><br><span class="line"># 使用表级约束语法建立唯一约束，并指定约束名</span><br><span class="line">constaint class_name <span class="keyword">unique</span>(<span class="keyword">name</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -462,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,6 +558,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-NOT-NULL约束"><span class="nav-number">1.</span> <span class="nav-text">一.NOT NULL约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-UNIQUE约束"><span class="nav-number">2.</span> <span class="nav-text">二. UNIQUE约束</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

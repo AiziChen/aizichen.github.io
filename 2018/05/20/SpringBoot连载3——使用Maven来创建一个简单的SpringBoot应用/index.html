@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="陈权业的博客">
 <meta property="og:description" content="俗话说一个简单的SpringBoot应用开发就是SpringBoot的精髓，因此这个“简单的SpringBoot应用”它并不“简单”，更不是没用的，恰恰是非常值得学习的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-20T02:04:41.566Z">
+<meta property="og:updated_time" content="2018-05-20T02:22:12.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot连载3——使用Maven来创建一个简单的SpringBoot应用">
 <meta name="twitter:description" content="俗话说一个简单的SpringBoot应用开发就是SpringBoot的精髓，因此这个“简单的SpringBoot应用”它并不“简单”，更不是没用的，恰恰是非常值得学习的。">
@@ -363,9 +363,9 @@
 </ol>
 <p>打开命令行然后进入first-springbootapp目录，在命令行中输入：</p>
 <blockquote>
-<p>mvn dependency:tree<br>该命令会自动下载以上已经配置的SpringBoot依赖包，并且显示出各个包之间的依赖，此时注意保持计算机处于联网状态，否则将会出现一系列错误，第二次即使已经联网了也无法下载了，这个Maven的一个Bug。<br>如果成功执行完成，就会显示SUCCESS的字样，并展示出它们的依赖关系，否则会显示FAIL。</p>
+<p>mvn dependency:tree<br>该命令会自动下载以上已经配置的SpringBoot依赖包，并且显示出各个包之间的依赖，此时注意保持计算机处于联网状态，否则将会出现一系列错误，第二次即使已经联网了也无法下载了，这是Maven的一个Bug。<br>如果成功执行完成，就会显示SUCCESS的字样，并展示出它们的依赖关系，否则会显示FAIL。</p>
 </blockquote>
-<h3 id="编写SpringMVC的Handler"><a href="#编写SpringMVC的Handler" class="headerlink" title="编写SpringMVC的Handler"></a>编写SpringMVC的Handler</h3><p>SpringBoot提供的SpringMVC与之前的SpringMVC版本有些细微差别，主要是Annotation上的不同。<br>在first-springbootapp目录下新建/src/main/java文件夹路径，然后再在里面新建一个MyController.java和一个WebApp.java文件。</p>
+<h3 id="编写SpringMVC的Handler"><a href="#编写SpringMVC的Handler" class="headerlink" title="编写SpringMVC的Handler"></a>编写SpringMVC的Handler</h3><p>SpringBoot提供的SpringMVC与之前用的SpringMVC版本有些细微差别，主要是Annotation上的不同。<br>在first-springbootapp目录下新建/src/main/java文件夹路径（该路径为Maven的默认源码路径），然后再在里面新建一个MyController.java和一个WebApp.java文件。</p>
 <p>文件 MyController.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">home</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>文件 WebApp.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebApp</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(MyApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>没错，直接使用main方法就可以启动这个Web应用了。</p>
@@ -434,6 +434,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/07/数据库知识与JDBC-SQL语句基础/" rel="prev" title="数据库知识与JDBC-SQL语句基础">
+                数据库知识与JDBC-SQL语句基础 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -521,7 +525,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -532,7 +536,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

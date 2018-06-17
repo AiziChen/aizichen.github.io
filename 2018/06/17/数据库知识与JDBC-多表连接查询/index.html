@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,JDBC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SQL的多表连接查询分为SQL92和SQL99两种，其中SQL99的多表查询是SQL92的多表查询的升级，SQL99的多表查询使得SQL脚本在进行多表查询时其语法更加清晰明了了。">
+<meta name="keywords" content="数据库,JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库知识与JDBC-多表连接查询">
+<meta property="og:url" content="http://yoursite.com/2018/06/17/数据库知识与JDBC-多表连接查询/index.html">
+<meta property="og:site_name" content="陈权业的博客">
+<meta property="og:description" content="SQL的多表连接查询分为SQL92和SQL99两种，其中SQL99的多表查询是SQL92的多表查询的升级，SQL99的多表查询使得SQL脚本在进行多表查询时其语法更加清晰明了了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-17T09:27:36.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库知识与JDBC-多表连接查询">
+<meta name="twitter:description" content="SQL的多表连接查询分为SQL92和SQL99两种，其中SQL99的多表查询是SQL92的多表查询的升级，SQL99的多表查询使得SQL脚本在进行多表查询时其语法更加清晰明了了。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/17/数据库知识与JDBC-多表连接查询/"/>
+
+
+
+
+
+  <title>数据库知识与JDBC-多表连接查询 | 陈权业的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈权业的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/17/数据库知识与JDBC-多表连接查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈权业">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈权业的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库知识与JDBC-多表连接查询</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T15:54:28+08:00">
+                2018-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多表连接查询/" itemprop="url" rel="index">
+                    <span itemprop="name">多表连接查询</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SQL的多表连接查询分为SQL92和SQL99两种，其中SQL99的多表查询是SQL92的多表查询的升级，SQL99的多表查询使得SQL脚本在进行多表查询时其语法更加清晰明了了。<a id="more"></a></p>
+<p>##　一. 准备表</p>
+<ol>
+<li>创建clazz表并向其中插入几行数据</li>
+</ol>
+<ul>
+<li><p>新建clazz表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> clazz (</span><br><span class="line">clazz_id <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">clazz_name <span class="built_in">varchar</span>(<span class="number">25</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">code <span class="built_in">varchar</span>(<span class="number">11</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向clazz表中插入三个班级的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 第一行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> clazz</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'14药专1班'</span>, <span class="string">'58201401'</span>);</span><br><span class="line"># 第二行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> clazz</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'14药专2班'</span>, <span class="string">'58201402'</span>);</span><br><span class="line"># 第三行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> clazz</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'15药专班'</span>, <span class="string">'58201501'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>创建student表并向其中插入几行数据</li>
+</ol>
+<ul>
+<li><p>新建student表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student (</span><br><span class="line">stu_id <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">stu_name <span class="built_in">varchar</span>(<span class="number">25</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">gender <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">clazz_id <span class="built_in">int</span> <span class="keyword">references</span> clazz(clazz_id);</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向student表中插入四行学生的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 第一行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'John'</span>, <span class="string">'男'</span>, <span class="number">1</span>);</span><br><span class="line"># 第二行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'Nancy'</span>, <span class="string">'女'</span>, <span class="number">2</span>);</span><br><span class="line"># 第三行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'Ruby'</span>, <span class="string">'女'</span>, <span class="number">1</span>);</span><br><span class="line"># 第四行</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">(<span class="literal">NULL</span>, <span class="string">'Jack'</span>, <span class="string">'男'</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="二-SQL92版的多表查询方式"><a href="#二-SQL92版的多表查询方式" class="headerlink" title="二. SQL92版的多表查询方式"></a>二. SQL92版的多表查询方式</h2><p>SQL92的多表查询主要使用select和where两个关键字来完成。</p>
+<ul>
+<li><p>以下是查询表student中的所有列以及clazz表中的班级名称列：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.*, c.clazz_name 班级名称</span><br><span class="line"><span class="keyword">from</span> student s, clazz c</span><br><span class="line"><span class="keyword">where</span> s.clazz_id = s.clazz_id;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SQL92查询可以省略查询条件——即”where”选项:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.*, c.clazz_id 班级名称</span><br><span class="line"><span class="keyword">from</span> student s, clazz c;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上的这种查询方式由于没有指定查询条件，因此会查询出两表间的全集，这个全集又叫“广义笛卡儿积”。</p>
+<h2 id="三-SQL99的多表查询方式"><a href="#三-SQL99的多表查询方式" class="headerlink" title="三.SQL99的多表查询方式"></a>三.SQL99的多表查询方式</h2><p>相比SQL92，SQL99提供了功能更加完善和语义更加清晰的多表查询方式，这种查询方式有以下几种：</p>
+<ol>
+<li>cross join  – 交叉连接</li>
+<li>natural join  – 自然连接</li>
+<li>inner join / join  – 内连接</li>
+<li>left [outer] join  – 左外连接</li>
+<li>right [outer] join  – 左内连接<br>以上除了cross join和natural join查询方式，其它的查询方式均需要在其后加上on语句或using语句来进行条件指定。在MySQL中，若inner join和left/right [outer] join没有指定on或using语句，则默认为cross join；但在Oracle等数据库中，若没有为它们指定on或using语句，则会出错。</li>
+</ol>
+<h3 id="1-cross-join-——-交叉连接"><a href="#1-cross-join-——-交叉连接" class="headerlink" title="1. cross join —— 交叉连接"></a>1. cross join —— 交叉连接</h3><p>这种连接就是一个“广义笛卡儿积”。</p>
+<h3 id="2-inner-join-——-内连接"><a href="#2-inner-join-——-内连接" class="headerlink" title="2. inner join　——　内连接"></a>2. inner join　——　内连接</h3><p>在SQL中，由于inner join非常常用，因此SQL定制协会将join默认为inner join；所以在SQL中，join和inner join是同一个语句。<br>内连接的作用是：若join入（引入）的表在on语句进行判断为true，则关联（连接）两表，否则就不进行关联。简单来说就是关联在on语句成立时的两表所在的行。<br>例子：查询所有的学生和其对应的班级名称<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.*, c.clazz_name</span><br><span class="line"># 以student表为基表</span><br><span class="line"><span class="keyword">from</span> student s</span><br><span class="line"># 加入clazz表作为查询条件</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> clazz c</span><br><span class="line"><span class="keyword">on</span> s.clazz_id = c.clazz_id;</span><br></pre></td></tr></table></figure></p>
+<p>这个查询和第一节中使用SQL92来查询所有的学生以及其所对应的班级的功能相同，可以观察到，使用inner join的语句反而更加冗长了，不过语句却变得清晰了。<br>注： 由于student表中的clazz_id和clazz表中的clazz_id，这两个表名是相同的，因此可以使用using语句，这样可以使得语句变得更加简单：</p>
+<blockquote>
+<p>on s.clazz_id = c.clazz_id;<br>可改为<br>using(clazz_id);</p>
+</blockquote>
+<h3 id="3-natural-join-——-自然连接"><a href="#3-natural-join-——-自然连接" class="headerlink" title="3. natural join　——　自然连接"></a>3. natural join　——　自然连接</h3><p>这种连接方式其实质上也是一种inner join连接方式，只是它默认使用了using语句，即在from表和join表中若含有相同列名的值时就关联两表；不过，若from表和join表中沒有相同的列名，则默认为corss join，即“广义笛卡儿积”。<br>例如，以上的inner join完全可以使用natural join来完成，而不需要使用on或using语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.*, c.clazz_name</span><br><span class="line"><span class="keyword">from</span> student s</span><br><span class="line"><span class="keyword">natural</span> <span class="keyword">join</span> clazz c;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-left-outer-join-——-左外连接"><a href="#4-left-outer-join-——-左外连接" class="headerlink" title="4. left [outer] join —— 左外连接"></a>4. left [outer] join —— 左外连接</h3><p>其中的outer可以省略。<br>左外连接实质上是把from表当成左表，join表都当成右表；当on语句中的条件成立时，就匹配左表中所有行对应的右表的行，若右表没有匹配的行时，用NULL来替代。<br>例子：查询from表（左表）所对应的所有的join表（右表）<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> clazz</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> student</span><br><span class="line"><span class="keyword">using</span>(clazz_id);</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-right-outer-join-——-右外连接"><a href="#5-right-outer-join-——-右外连接" class="headerlink" title="5. right [outer] join —— 右外连接"></a>5. right [outer] join —— 右外连接</h3><p>其中的outer可以省略。<br>左外连接实质上是把from表当成右表，join表都当成左表；当on语句中的条件成立时，就匹配左表中所有行对应的右表的行，若右表没有匹配的行时，用NULL来替代。<br>例子：查询join表（左表）所对应的所有的from表（右表）<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> clazz</span><br><span class="line"><span class="keyword">using</span>(clazz_id);</span><br></pre></td></tr></table></figure></p>
+<p>以上的返回结果和以上使用left join的返回结果相同。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+ <div>
+  
+    ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束<i class="fa fa-heart"></i>感谢阅读------</div>
+    
+</div>
+  
+</div>
+ 
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/JDBC/" rel="tag"># JDBC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/10/数据库知识与JDBC-表单查询/" rel="next" title="数据库知识与JDBC-表单查询">
+                <i class="fa fa-chevron-left"></i> 数据库知识与JDBC-表单查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/17/数据库知识与JDBC-子查询与数据库函数/" rel="prev" title="数据库知识与JDBC-子查询与数据库函数">
+                数据库知识与JDBC-子查询与数据库函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">陈权业</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到这里，这里有我分享的各种文章噢！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二-SQL92版的多表查询方式"><span class="nav-number">1.</span> <span class="nav-text">二. SQL92版的多表查询方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-SQL99的多表查询方式"><span class="nav-number">2.</span> <span class="nav-text">三.SQL99的多表查询方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cross-join-——-交叉连接"><span class="nav-number">2.1.</span> <span class="nav-text">1. cross join —— 交叉连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-inner-join-——-内连接"><span class="nav-number">2.2.</span> <span class="nav-text">2. inner join　——　内连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-natural-join-——-自然连接"><span class="nav-number">2.3.</span> <span class="nav-text">3. natural join　——　自然连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-left-outer-join-——-左外连接"><span class="nav-number">2.4.</span> <span class="nav-text">4. left [outer] join —— 左外连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-right-outer-join-——-右外连接"><span class="nav-number">2.5.</span> <span class="nav-text">5. right [outer] join —— 右外连接</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈权业</span>
+
+  
+</div>
+<a href="http://www.quanye.xyz">作者首页</a>，
+<a href="https://github.com/aizichen">GitHub</a>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

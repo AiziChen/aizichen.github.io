@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="开源," />
+  <meta name="keywords" content="数据库,JDBC," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="我写的AkNote笔记本今天开源啦，源码在我的github上，开源协议基于Aapche-2.0，你可以直接在下面的链接中访问并获取它：https://github.com/AiziChen/AkNote 简介这是我的一款非常喜爱的笔记本软件，我目前一直都在我的工作和学习中使用它，在开发这款笔记本软件之前，我还与另一位朋友开发过一款类似的笔记本软件，其目的是为了给自己和他人带来既亲切又爽快的操作体验">
-<meta name="keywords" content="开源">
+<meta name="description" content="一. 子查询子查询指的是在一个查询语句中嵌套另一个查询语句，子查询支持无限层级的嵌套，子查询可以出现在以下两个位置：  出现在from语句后，此时称该表为数据表，也被称为内视图。 出现在where条件语句后，作用是作为过滤条件的值。">
+<meta name="keywords" content="数据库,JDBC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AkNote笔记本开源啦">
-<meta property="og:url" content="http://yoursite.com/2018/03/26/AkNote笔记本开源啦/index.html">
+<meta property="og:title" content="数据库知识与JDBC-子查询与数据库函数">
+<meta property="og:url" content="http://yoursite.com/2018/06/17/数据库知识与JDBC-子查询与数据库函数/index.html">
 <meta property="og:site_name" content="陈权业的博客">
-<meta property="og:description" content="我写的AkNote笔记本今天开源啦，源码在我的github上，开源协议基于Aapche-2.0，你可以直接在下面的链接中访问并获取它：https://github.com/AiziChen/AkNote 简介这是我的一款非常喜爱的笔记本软件，我目前一直都在我的工作和学习中使用它，在开发这款笔记本软件之前，我还与另一位朋友开发过一款类似的笔记本软件，其目的是为了给自己和他人带来既亲切又爽快的操作体验">
+<meta property="og:description" content="一. 子查询子查询指的是在一个查询语句中嵌套另一个查询语句，子查询支持无限层级的嵌套，子查询可以出现在以下两个位置：  出现在from语句后，此时称该表为数据表，也被称为内视图。 出现在where条件语句后，作用是作为过滤条件的值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/AiziChen/AkNote/master/screenshot/screenshot_main2.png">
-<meta property="og:updated_time" content="2018-03-26T05:39:33.420Z">
+<meta property="og:updated_time" content="2018-06-17T09:57:58.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AkNote笔记本开源啦">
-<meta name="twitter:description" content="我写的AkNote笔记本今天开源啦，源码在我的github上，开源协议基于Aapche-2.0，你可以直接在下面的链接中访问并获取它：https://github.com/AiziChen/AkNote 简介这是我的一款非常喜爱的笔记本软件，我目前一直都在我的工作和学习中使用它，在开发这款笔记本软件之前，我还与另一位朋友开发过一款类似的笔记本软件，其目的是为了给自己和他人带来既亲切又爽快的操作体验">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/AiziChen/AkNote/master/screenshot/screenshot_main2.png">
+<meta name="twitter:title" content="数据库知识与JDBC-子查询与数据库函数">
+<meta name="twitter:description" content="一. 子查询子查询指的是在一个查询语句中嵌套另一个查询语句，子查询支持无限层级的嵌套，子查询可以出现在以下两个位置：  出现在from语句后，此时称该表为数据表，也被称为内视图。 出现在where条件语句后，作用是作为过滤条件的值。">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/26/AkNote笔记本开源啦/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/17/数据库知识与JDBC-子查询与数据库函数/"/>
 
 
 
 
 
-  <title>AkNote笔记本开源啦 | 陈权业的博客</title>
+  <title>数据库知识与JDBC-子查询与数据库函数 | 陈权业的博客</title>
   
 
 
@@ -265,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/AkNote笔记本开源啦/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/17/数据库知识与JDBC-子查询与数据库函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈权业">
@@ -282,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">AkNote笔记本开源啦</h1>
+          <h1 class="post-title" itemprop="name headline">数据库知识与JDBC-子查询与数据库函数</h1>
         
 
         <div class="post-meta">
@@ -294,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T12:53:37+08:00">
-                2018-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T17:42:11+08:00">
+                2018-06-17
               </time>
             
 
@@ -304,6 +302,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/子查询-数据库函数/" itemprop="url" rel="index">
+                    <span itemprop="name">子查询/数据库函数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -332,13 +352,14 @@
       
 
       
-        <p>我写的AkNote笔记本今天开源啦，源码在我的github上，开源协议基于Aapche-2.0，你可以直接在下面的链接中访问并获取它：<br><a href="https://github.com/AiziChen/AkNote" title="https://github.com/AiziChen/AkNote" target="_blank" rel="noopener">https://github.com/AiziChen/AkNote</a></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这是我的一款非常喜爱的笔记本软件，我目前一直都在我的工作和学习中使用它，在开发这款笔记本软件之前，我还与另一位朋友开发过一款类似的笔记本软件，其目的是为了给自己和他人带来既亲切又爽快的操作体验，同时还必需得拥有强大的功能以及简洁的数据结构，因为毕竟现在的各类笔记本实在是太逊色了！<a id="more"></a>功能要实用不实用，笔记存储杂乱无章，或者运行速度令人煎熬 —— 瞬间来的灵感被那蜗速给磨灭了。</p>
-<p>之所以我重新开发了这一款软件，是因为之前所使用的语言是JavaSE，而Java平台又缺乏可用的浏览器内核，当采用TinyMce等Js编辑器时，会出现各种各样的问题，并且JavaFx运行效率非常低；当时那位朋友还开发了安卓平台的版本，同时支持双向同步（66）。目前的版本使用的是C#，它支持csharp浏览器插件，并且在windows平台下具有极好的运行效率，同时目前C#又在推广其跨平台的特性，因此在未来，使用C#作为跨平台的开发语言也是一种很棒的解决方案，这也是我选择使用C#来开发的原因。</p>
-<p>这款软件名字叫AkNote，为什么叫AkNote呢？因为在我做这款软件的最初目标时对它的定义，就不仅仅是只为我自己而服务的，我的目标是想做出一个适合于大部分人员都可以轻松使用的笔记本/工作本。Ak是All Kinds Of的去of缩写，表示各类的人员都可以使用；缩去O是因为AK本来就是强大易用化身名（作者也很喜欢枪），而AkNote本身就非常强大，有太多的地方符合这个名字了。</p>
-<p>目前的版本的部分功能还在持续开发当中，不过目前已经可以投入使用了，正常的使用完全没有问题。</p>
-<p>最后附上一些截图：<br><img src="https://raw.githubusercontent.com/AiziChen/AkNote/master/screenshot/screenshot_main2.png" alt="AkNote截图"></p>
-
+        <h2 id="一-子查询"><a href="#一-子查询" class="headerlink" title="一. 子查询"></a>一. 子查询</h2><p>子查询指的是在一个查询语句中嵌套另一个查询语句，子查询支持无限层级的嵌套，子查询可以出现在以下两个位置：</p>
+<ol>
+<li>出现在from语句后，此时称该表为数据表，也被称为内视图。</li>
+<li>出现在where条件语句后，作用是作为过滤条件的值。<a id="more"></a></li>
+</ol>
+<h3 id="1-子查询中作为视图"><a href="#1-子查询中作为视图" class="headerlink" title="1. 子查询中作为视图"></a>1. 子查询中作为视图</h3><p>如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">form</span> student) t</span><br><span class="line"><span class="keyword">where</span> t.clazz_id &lt; <span class="number">5</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-子查询中作为where值"><a href="#2-子查询中作为where值" class="headerlink" title="2. 子查询中作为where值"></a>2. 子查询中作为where值</h3><p>如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> clazz_id</span><br><span class="line">(<span class="keyword">select</span> clazz_id</span><br><span class="line"><span class="keyword">from</span> clazz</span><br><span class="line"><span class="keyword">where</span> code = <span class="string">'58201401'</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="二-数据库函数"><a href="#二-数据库函数" class="headerlink" title="二. 数据库函数"></a>二. 数据库函数</h2>
       
     </div>
     
@@ -365,7 +386,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/开源/" rel="tag"># 开源</a>
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/JDBC/" rel="tag"># JDBC</a>
           
         </div>
       
@@ -378,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/20/Material-Design简介/" rel="next" title="Material Design简介">
-                <i class="fa fa-chevron-left"></i> Material Design简介
+              <a href="/2018/06/17/数据库知识与JDBC-多表连接查询/" rel="next" title="数据库知识与JDBC-多表连接查询">
+                <i class="fa fa-chevron-left"></i> 数据库知识与JDBC-多表连接查询
               </a>
             
           </div>
@@ -387,10 +410,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/05/DBUtils的介绍和使用/" rel="prev" title="DBUtils的介绍和使用">
-                DBUtils的介绍和使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-子查询"><span class="nav-number">1.</span> <span class="nav-text">一. 子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-子查询中作为视图"><span class="nav-number">1.1.</span> <span class="nav-text">1. 子查询中作为视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子查询中作为where值"><span class="nav-number">1.2.</span> <span class="nav-text">2. 子查询中作为where值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-数据库函数"><span class="nav-number">2.</span> <span class="nav-text">二. 数据库函数</span></a></li></ol></div>
             
 
           </div>

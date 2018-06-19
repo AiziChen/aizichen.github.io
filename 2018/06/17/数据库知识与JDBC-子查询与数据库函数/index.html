@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="陈权业的博客">
 <meta property="og:description" content="一. 子查询子查询指的是在一个查询语句中嵌套另一个查询语句，子查询支持无限层级的嵌套，子查询可以出现在以下两个位置：  出现在from语句后，此时称该表为数据表，也被称为内视图。 出现在where条件语句后，作用是作为过滤条件的值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-17T09:57:58.348Z">
+<meta property="og:updated_time" content="2018-06-18T14:55:18.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库知识与JDBC-子查询与数据库函数">
 <meta name="twitter:description" content="一. 子查询子查询指的是在一个查询语句中嵌套另一个查询语句，子查询支持无限层级的嵌套，子查询可以出现在以下两个位置：  出现在from语句后，此时称该表为数据表，也被称为内视图。 出现在where条件语句后，作用是作为过滤条件的值。">
@@ -359,7 +359,60 @@
 </ol>
 <h3 id="1-子查询中作为视图"><a href="#1-子查询中作为视图" class="headerlink" title="1. 子查询中作为视图"></a>1. 子查询中作为视图</h3><p>如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">form</span> student) t</span><br><span class="line"><span class="keyword">where</span> t.clazz_id &lt; <span class="number">5</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="2-子查询中作为where值"><a href="#2-子查询中作为where值" class="headerlink" title="2. 子查询中作为where值"></a>2. 子查询中作为where值</h3><p>如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> clazz_id</span><br><span class="line">(<span class="keyword">select</span> clazz_id</span><br><span class="line"><span class="keyword">from</span> clazz</span><br><span class="line"><span class="keyword">where</span> code = <span class="string">'58201401'</span>);</span><br></pre></td></tr></table></figure></p>
-<h2 id="二-数据库函数"><a href="#二-数据库函数" class="headerlink" title="二. 数据库函数"></a>二. 数据库函数</h2>
+<h2 id="二-数据库函数"><a href="#二-数据库函数" class="headerlink" title="二. 数据库函数"></a>二. 数据库函数</h2><p>SQL中的函数和Java中的方法有许多相似之处，但SQL中的函数独立于类，可在任何地方为用户提供调用服务。<br>调用SQL函数的语法为：</p>
+<blockquote>
+<p>function_name(参数1，参数2, …)</p>
+</blockquote>
+<p>根据函数对多行数据的处理方式，SQL中的函数可分为单行函数和多行函数；单行函数用于处理每行数据并逐一返回，而多行函数用于同时处理多行数据，最后只返回一个结果。</p>
+<h3 id="I-单行函数"><a href="#I-单行函数" class="headerlink" title="I. 单行函数"></a>I. 单行函数</h3><p>多行函数主要用于完成某些统计功能，在大部分数据库中的功能基本相同。但单行函数在不同的数据库中差异较大。在MySQL中的单行函数可按类型分为以下几类：</p>
+<ol>
+<li>数值型</li>
+<li>字符型</li>
+<li>日期时间型</li>
+<li>转换型</li>
+<li>其它</li>
+</ol>
+<p>其中的转换函数主要用于处理类型转换，其它函数又可以分为以下几种：</p>
+<ol>
+<li>位函数</li>
+<li>流程控制函数</li>
+<li>加密解密函数</li>
+<li>信息函数</li>
+</ol>
+<h4 id="1-1-字符型"><a href="#1-1-字符型" class="headerlink" title="1.1 字符型"></a>1.1 字符型</h4><p>1.1.1 char_length - 计算字符长度<br>计算student表中stu_name的长度<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">char_length</span>(stu_name) student_name_len</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-2-数值型"><a href="#1-2-数值型" class="headerlink" title="1.2 数值型"></a>1.2 数值型</h4><p>1.2.1 sin/cos/tan - 计算数值的sin/cos和tan值<br>计算student表中stu_name长度的sin值<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">sin</span>(<span class="keyword">char_length</span>(stu_name)) student_cos_value</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-3-日期型"><a href="#1-3-日期型" class="headerlink" title="1.3 日期型"></a>1.3 日期型</h4><p>1.3.1 curdate/curtime/now - 获取当前日期／时间／日期和时间<br>返回当前日期时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">now</span>() 当前日期－时间;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">curdate</span>() 当前日期, <span class="keyword">curtime</span>() 当前时间;</span><br></pre></td></tr></table></figure></p>
+<p>1.3.2 date_add - 为指定的日期添加一段时间<br>为”1995-10-21”日添加一天<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 其中的interval代表时间间隔，后面跟数值和时间的长度单位</span><br><span class="line"># 年／月／日／时／分／秒分别为year/month/day/hour/minute/second</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(<span class="string">'1995-10-21'</span>, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">day</span>);</span><br></pre></td></tr></table></figure></p>
+<p>1.3.3 adddate - 添加指定的天数<br>为”1995-10-21”日添加一天<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> adddate(<span class="string">'1995-10-21'</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-4-加密型"><a href="#1-4-加密型" class="headerlink" title="1.4 加密型"></a>1.4 加密型</h4><p>1.4.1 md5 - 获取对应数据类型的MD5值<br>获取student表中所有学生姓名的MD5值：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> stu_id, <span class="keyword">md5</span>(stu_name) stu_md5, stu_name</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-5-处理null的函数"><a href="#1-5-处理null的函数" class="headerlink" title="1.5 处理null的函数"></a>1.5 处理null的函数</h4><ul>
+<li>ifnull(expr1, expr2) - 若expr1为NULL，则返回expr2，否则返回expr1；</li>
+<li>nullif(expr1, expr2) - 若expr1和expr2相等，则返回NULL，否则返回expr1；</li>
+<li>if(expr1, expr2, expr3) - 类似于”?:”三目运算符；若expr1为TRUE，或不为0以及不为NULL，则返回expr2，否则返回expr3；</li>
+<li>isnull(expr1) - 判断expr1是否为NULL，是则返回1，否则返回0；</li>
+</ul>
+<blockquote>
+<p>注：以上为MySQL中单行函数的基本用法；由于在不同的关系型数据库中单行函数的用法不同，且其返回结果也有差异，因此在使用Java时，通常建议使用Java中的方法来生成单行结果，而不是数据库中的单行函数；这样做可以在需要切换数据库时就不用考虑不同的数据库中单行函数生成的结果不同的现象。</p>
+</blockquote>
+<h3 id="II-多行函数"><a href="#II-多行函数" class="headerlink" title="II. 多行函数"></a>II. 多行函数</h3><p>多行函数又称为组函数。是将一组数据作为整体计算，每组记录返回一个结果。组函数在不同的关系型数据库之间通常是通用的，常用的组函数有如下5个：</p>
+<ol>
+<li>avg([distinct|all] expr): 计算多行expr的平均值，数值型。distinct为可选项，表示不计算重复值；默认为all，表示计算所有行的平均值。</li>
+<li>count(<em>[distinct|all] expr): 计算多行expr的总数，任意类型。”</em>“用于统计表内的记录行数，distinct和all与前面类似。</li>
+<li>sum([distinct|all] expr): 计算多行expr的总和，数值型。</li>
+<li>max(expr): 计算多行数据中的最大值，任意类型。</li>
+<li>min(expr): 计算多行数据中的最小值，任意类型。</li>
+</ol>
+<p>2.1 count - 计算所有记录的总数<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 计算student表中所有的行数</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"># 计算student表中stu_name列总共有多少个</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> stu_name)</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<p>2.2 sum的用法 - 计算所有记录中数值列的总和<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 计算stu_id的总和</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(stu_id) <span class="keyword">id</span>总数</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<p>2.3 max - 计算所有记录中列的最大值<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(stu_id) 所有学生中stu_id的最大值</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<p>2.4 min - 计算所有记录中列的最小值<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">min</span>(stu_id) 所有学生中stu_id的最小值</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<p>2.5 avg - 计算所有记录的平均值<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 计算所有学生ID的平均值</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">avg</span>(<span class="keyword">ifnull</span>(stu_id, <span class="number">0</span>))</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></p>
+<p>以上对于可出现的NULL列，可以使用ifnull函数来处理。</p>
+<h3 id="IV-分组"><a href="#IV-分组" class="headerlink" title="IV. 分组"></a>IV. 分组</h3><p>由于多行函数（组函数）处理多行时只会返回一行数据，这一行数据又称为一组数据；通常情况下可能需要把这一返回的数据与所有的记录行进行组合；该功能使用SQL提供的group by子句可以实现。<br>例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> stu_name;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>使用having子句来过滤组函数</li>
+</ol>
+
       
     </div>
     
@@ -541,7 +594,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-子查询"><span class="nav-number">1.</span> <span class="nav-text">一. 子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-子查询中作为视图"><span class="nav-number">1.1.</span> <span class="nav-text">1. 子查询中作为视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子查询中作为where值"><span class="nav-number">1.2.</span> <span class="nav-text">2. 子查询中作为where值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-数据库函数"><span class="nav-number">2.</span> <span class="nav-text">二. 数据库函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-子查询"><span class="nav-number">1.</span> <span class="nav-text">一. 子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-子查询中作为视图"><span class="nav-number">1.1.</span> <span class="nav-text">1. 子查询中作为视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子查询中作为where值"><span class="nav-number">1.2.</span> <span class="nav-text">2. 子查询中作为where值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-数据库函数"><span class="nav-number">2.</span> <span class="nav-text">二. 数据库函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-单行函数"><span class="nav-number">2.1.</span> <span class="nav-text">I. 单行函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-字符型"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 字符型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-数值型"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 数值型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-日期型"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 日期型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-加密型"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 加密型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-处理null的函数"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 处理null的函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#II-多行函数"><span class="nav-number">2.2.</span> <span class="nav-text">II. 多行函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IV-分组"><span class="nav-number">2.3.</span> <span class="nav-text">IV. 分组</span></a></li></ol></li></ol></div>
             
 
           </div>

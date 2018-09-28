@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="陈权业的博客">
 <meta property="og:description" content="Quartz的深入使用本节主要介绍两个深入的内容：（Job&amp;amp;JobDetail）和Trigger。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-28T02:55:45.643Z">
+<meta property="og:updated_time" content="2018-09-24T00:03:40.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quartz的深入使用">
 <meta name="twitter:description" content="Quartz的深入使用本节主要介绍两个深入的内容：（Job&amp;amp;JobDetail）和Trigger。">
@@ -331,7 +331,7 @@
 
       
         <h2 id="Quartz的深入使用"><a href="#Quartz的深入使用" class="headerlink" title="Quartz的深入使用"></a>Quartz的深入使用</h2><p>本节主要介绍两个深入的内容：（Job&amp;JobDetail）和Trigger。<a id="more"></a></p>
-<h4 id="一、Job-与-JobDetail"><a href="#一、Job-与-JobDetail" class="headerlink" title="一、Job 与 JobDetail"></a>一、Job 与 JobDetail</h4><p>当需要向Job中传输数据时，我们可以使用Quartz提供了JobDataMap对象：</p>
+<h4 id="一、Job-与-JobDetail"><a href="#一、Job-与-JobDetail" class="headerlink" title="一、Job 与 JobDetail"></a>一、Job 与 JobDetail</h4><p>当需要向Job中传输数据时，我们可使用Quartz提供的JobDataMap对象：</p>
 <p>（1）在调度任务中：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line">			scheduler.start();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// Do some jobs-scheduler here</span></span><br><span class="line">			JobDetail detail = JobBuilder.newJob(MyJob2.class)</span><br><span class="line">					.withIdentity(<span class="string">"myJob2"</span>, <span class="string">"group2"</span>)</span><br><span class="line">					<span class="comment">// 使用suingJobData就可以向JobDataMap中传入数据了</span></span><br><span class="line">					.usingJobData(<span class="string">"jobSays"</span>, <span class="string">"Hello, World!"</span>)</span><br><span class="line">					.usingJobData(<span class="string">"myFloatValue"</span>, <span class="number">3.1415F</span>)</span><br><span class="line">					.build();</span><br><span class="line">			</span><br><span class="line">			Trigger trigger = TriggerBuilder.newTrigger()</span><br><span class="line">					.withIdentity(<span class="string">"myTrigger"</span>, <span class="string">"group2"</span>)</span><br><span class="line">					.startNow()</span><br><span class="line">					.withSchedule(SimpleScheduleBuilder</span><br><span class="line">							.simpleSchedule()</span><br><span class="line">							.withIntervalInSeconds(<span class="number">3</span>)</span><br><span class="line">							.repeatForever())</span><br><span class="line">					.build();</span><br><span class="line">			scheduler.scheduleJob(detail, trigger);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// Shutdown the scheduler</span></span><br><span class="line"><span class="comment">//			scheduler.shutdown();</span></span><br></pre></td></tr></table></figure>
 <p>（2）在Job中：</p>
@@ -477,7 +477,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -499,7 +499,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

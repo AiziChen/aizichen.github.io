@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Quartz的介绍和使用Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量的更加复杂的线程调度任务，并且支持在指定的时间点下进行线程的调度工作。">
+<meta name="description" content="Quartz的介绍和使用Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量和更加复杂的线程调度任务，和支持在指定的时间点下进行线程的调度工作。">
 <meta name="keywords" content="调度,quartz">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;Quartz的介绍和使用&#39;">
 <meta property="og:url" content="http://yoursite.com/2018/08/28/Quartz的介绍和使用/index.html">
 <meta property="og:site_name" content="陈权业的博客">
-<meta property="og:description" content="Quartz的介绍和使用Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量的更加复杂的线程调度任务，并且支持在指定的时间点下进行线程的调度工作。">
+<meta property="og:description" content="Quartz的介绍和使用Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量和更加复杂的线程调度任务，和支持在指定的时间点下进行线程的调度工作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-28T02:17:45.065Z">
+<meta property="og:updated_time" content="2018-09-24T00:01:38.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Quartz的介绍和使用&#39;">
-<meta name="twitter:description" content="Quartz的介绍和使用Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量的更加复杂的线程调度任务，并且支持在指定的时间点下进行线程的调度工作。">
+<meta name="twitter:description" content="Quartz的介绍和使用Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量和更加复杂的线程调度任务，和支持在指定的时间点下进行线程的调度工作。">
 
 
 
@@ -330,8 +330,8 @@
       
 
       
-        <h2 id="Quartz的介绍和使用"><a href="#Quartz的介绍和使用" class="headerlink" title="Quartz的介绍和使用"></a>Quartz的介绍和使用</h2><p>Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量的更加复杂的线程调度任务，并且支持在指定的时间点下进行线程的调度工作。<a id="more"></a></p>
-<p>基本的使用：</p>
+        <h2 id="Quartz的介绍和使用"><a href="#Quartz的介绍和使用" class="headerlink" title="Quartz的介绍和使用"></a>Quartz的介绍和使用</h2><p>Quartz是Quartz Scheduler的简称，因此它就是一个线程调度工具。它类似于Timer，但又具有Timer所不具备的某些功能，比如它支持大量和更加复杂的线程调度任务，和支持在指定的时间点下进行线程的调度工作。<a id="more"></a></p>
+<p><strong>基本的使用：</strong></p>
 <h4 id="一、下载jar包或使用Maven进行包的导入"><a href="#一、下载jar包或使用Maven进行包的导入" class="headerlink" title="一、下载jar包或使用Maven进行包的导入"></a>一、下载jar包或使用Maven进行包的导入</h4><p>在写本教程时Quartz的最新版本为2.2.3。</p>
 <p>（1）使用jar包</p>
 <ol>
@@ -346,8 +346,8 @@
 <p>配置简介：</p>
 <ol>
 <li>org.quartz.scheduler.instanceName    指定当前调度任务的实例名</li>
-<li>org.quartz.threadPool.threadCount     最多可能运行的线程数</li>
-<li>org.quartz.jobStore.class    指定该Job的存储方式，这里使用了RAM的存储方式。</li>
+<li>org.quartz.threadPool.threadCount     最多可运行的线程数</li>
+<li>org.quartz.jobStore.class    指定该Job的存储方式，支持硬盘和RAM两种；这里使用了RAM的存储方式。</li>
 </ol>
 <h4 id="三、编写Job类（需要进行线程调度的类）"><a href="#三、编写Job类（需要进行线程调度的类）" class="headerlink" title="三、编写Job类（需要进行线程调度的类）"></a>三、编写Job类（需要进行线程调度的类）</h4><p>该类需要实现Quartz提供的Job接口。该接口提供了一个<code>execute</code>接口方法，用于实现当前任务的调度。</p>
 <p>下面是执行10次“日志打印任务”的Job：</p>
@@ -489,7 +489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -511,7 +511,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

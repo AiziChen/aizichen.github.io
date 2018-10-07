@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="编程,初学,scheme," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Scheme介绍我很喜欢成为一名教师，我也不知道其中我喜欢的原因是什么。我开这个博客的目的其实是为了实现我的教师梦。因此，我将分享你们一些编程的内容，因为这是我涉及得比较深入的一门学科。">
+<meta name="keywords" content="编程,初学,scheme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学编程（1）——从Scheme开始">
+<meta property="og:url" content="http://yoursite.com/2018/10/05/初学编程（1）——从Scheme开始/index.html">
+<meta property="og:site_name" content="陈权业的博客">
+<meta property="og:description" content="Scheme介绍我很喜欢成为一名教师，我也不知道其中我喜欢的原因是什么。我开这个博客的目的其实是为了实现我的教师梦。因此，我将分享你们一些编程的内容，因为这是我涉及得比较深入的一门学科。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/10/05/初学编程（1）——从Scheme开始/scheme-main-frame.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/05/初学编程（1）——从Scheme开始/first-program.png">
+<meta property="og:updated_time" content="2018-10-07T14:18:50.570Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学编程（1）——从Scheme开始">
+<meta name="twitter:description" content="Scheme介绍我很喜欢成为一名教师，我也不知道其中我喜欢的原因是什么。我开这个博客的目的其实是为了实现我的教师梦。因此，我将分享你们一些编程的内容，因为这是我涉及得比较深入的一门学科。">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/05/初学编程（1）——从Scheme开始/scheme-main-frame.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/05/初学编程（1）——从Scheme开始/"/>
+
+
+
+
+
+  <title>初学编程（1）——从Scheme开始 | 陈权业的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈权业的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/初学编程（1）——从Scheme开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈权业">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈权业的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初学编程（1）——从Scheme开始</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T22:14:52+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Scheme介绍"><a href="#Scheme介绍" class="headerlink" title="Scheme介绍"></a>Scheme介绍</h2><p>我很喜欢成为一名教师，我也不知道其中我喜欢的原因是什么。我开这个博客的目的其实是为了实现我的教师梦。因此，我将分享你们一些编程的内容，因为这是我涉及得比较深入的一门学科。<a id="more"></a></p>
+<p>那么如果你是想自学编程语言，我建议从Lisp方言学起，如现在我所将要讲的Scheme开始。至于原因则是：“目前的其它编程语言语法都比较复杂，语法糖也会比较多；而Lisp则已经包含了所有的所需要的编程语言内容，且它的语法又非常简单”。</p>
+<p>所有的程序语言有且只有心下几个内容：<strong>变量、函数(procedure，又叫过程)、控制流（if/cond/and/or）、循环和递归（for/while/recursion）、宏；</strong><br>因此不要担心难学习和难掌握，学习程序语言只要学会以上内容就会变得非常简单和易于掌握。</p>
+<h3 id="一、安装Scheme语言运行环境——Racket"><a href="#一、安装Scheme语言运行环境——Racket" class="headerlink" title="一、安装Scheme语言运行环境——Racket"></a>一、安装Scheme语言运行环境——Racket</h3><p>在讲解Scheme之前，我们需要一个运行它的工具，这个工具又叫做开发环境（IDE）。</p>
+<p>进入Racket的下载页面：<a href="https://download.racket-lang.org" target="_blank" rel="noopener">https://download.racket-lang.org</a></p>
+<p>下载相应操作系统的版本，接着进行安装。</p>
+<p>安装完成后接着打开它后的界面如下所示：</p>
+<p><img src="/2018/10/05/初学编程（1）——从Scheme开始/scheme-main-frame.png" alt=""></p>
+<h3 id="二、执行Scheme程序"><a href="#二、执行Scheme程序" class="headerlink" title="二、执行Scheme程序"></a>二、执行Scheme程序</h3><p>Racket是一个开发环境，那么我们就可以直接在上面编译并运行Scheme源代码。</p>
+<p>在选单栏中选择“语言（Language）—&gt; 选择语言（Choose Language）—&gt; Racket语言（The Racket Language）—&gt; #lang racket”。</p>
+<p>选择完成后会弹出一个选框，点击“添加#lang rakcet（Add #lang racket）”即可。</p>
+<p>接着在”#lang racket”下面写下以下的语句：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"你好"</span></span><br><span class="line"><span class="number">12345</span></span><br></pre></td></tr></table></figure>
+<p>然后点击右上角的“运行（Run）”绿色图标，此时程序将会运行起来。然后你将看到如下的界面：</p>
+<p><img src="/2018/10/05/初学编程（1）——从Scheme开始/first-program.png" alt="first-program.png"></p>
+<p>现在恭喜你，你现在已经会写程序了！接下来看一下如果用Scheme来进行数学计算吧：-)</p>
+<h3 id="二、Scheme是一个计算器"><a href="#二、Scheme是一个计算器" class="headerlink" title="二、Scheme是一个计算器"></a>二、Scheme是一个计算器</h3><p>没错，如标题所示，Scheme语言是一个计算器。</p>
+<p>注：分数用“n/m”的形式来表示，比如2分之1，写为”1/2”。</p>
+<p><strong>练习1、进行所有实数内的四则运算</strong></p>
+<p>（1）两个数的四则运算：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 这是一个注释，目的是用来解释接下来的代码的用途和目的，并不是程序的一部分</span></span><br><span class="line"><span class="comment">; 计算：1 + 2</span></span><br><span class="line">(<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> <span class="number">2</span>)</span><br><span class="line"><span class="comment">; 计算：1 * 2</span></span><br><span class="line">(<span class="name"><span class="builtin-name">*</span></span> <span class="number">1</span> <span class="number">2</span>)</span><br><span class="line"><span class="comment">; 计算：1 - 2</span></span><br><span class="line">(<span class="name"><span class="builtin-name">-</span></span> <span class="number">1</span> <span class="number">2</span>)</span><br><span class="line"><span class="comment">; 计算：1 除以 2</span></span><br><span class="line">(<span class="name"><span class="builtin-name">/</span></span> <span class="number">1</span> <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>（2）多个数的四则运算</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 计算：(1 * 2 * 3 * 5)</span></span><br><span class="line">(<span class="name"><span class="builtin-name">*</span></span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>)</span><br><span class="line"><span class="comment">; 计算：(1 + 2 + 3 - 4)</span></span><br><span class="line">(<span class="name"><span class="builtin-name">-</span></span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>) <span class="number">4</span>)</span><br><span class="line"><span class="comment">; 计算：(1 + 2 + 3 + 5) * 6 / 2</span></span><br><span class="line">(<span class="name"><span class="builtin-name">/</span></span> (<span class="name"><span class="builtin-name">*</span></span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span>) <span class="number">6</span>) <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>练习2、初中/高中以及大学数学的计算</strong></p>
+<p>（1）初中、高中数学计算</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 对4进行开平方</span></span><br><span class="line">(<span class="name"><span class="builtin-name">sqrt</span></span> <span class="number">4</span>)</span><br><span class="line"><span class="comment">; 取绝对值</span></span><br><span class="line">(<span class="name"><span class="builtin-name">round</span></span> <span class="number">3.3</span>)</span><br><span class="line"><span class="comment">; 取正整数</span></span><br><span class="line">(<span class="name"><span class="builtin-name">round</span></span> <span class="number">-32.4</span>)</span><br><span class="line"><span class="comment">; 求最大值和最小值</span></span><br><span class="line">(<span class="name"><span class="builtin-name">max</span></span> <span class="number">2</span> <span class="number">4</span> <span class="number">53</span> <span class="number">50</span> <span class="number">220</span> <span class="number">2</span> <span class="number">-24</span> <span class="number">53</span>)</span><br><span class="line">(<span class="name"><span class="builtin-name">min</span></span> <span class="number">2</span> <span class="number">4</span> <span class="number">53</span> <span class="number">50</span> <span class="number">220</span> <span class="number">2</span> <span class="number">-24</span> <span class="number">53</span>)</span><br><span class="line"><span class="comment">; ......</span></span><br></pre></td></tr></table></figure>
+<p>（2）大学数学计算</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 目前作者大学未学习过高数，因此这里留下了很多空白</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、查看Racket提供的文档"><a href="#三、查看Racket提供的文档" class="headerlink" title="三、查看Racket提供的文档"></a>三、查看Racket提供的文档</h3><p>Racket的开发环境提供了很全面的文档，你可以在选单栏中的“帮助（Help）—&gt;帮助台（Help Desk）”中查看。</p>
+<p>这节主要带大家进入编程的世界，让大家了解一下编程是怎么一回事。以及告诉了大家如何查看Racket开发环境提供的文档，大家一定要多多查看文档，以了解更多的内容噢！</p>
+<p>下一节将讲解的内容是——<strong>函数</strong>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+ <div>
+  
+    ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束<i class="fa fa-heart"></i>感谢阅读------</div>
+    
+</div>
+  
+</div>
+ 
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/初学/" rel="tag"># 初学</a>
+          
+            <a href="/tags/scheme/" rel="tag"># scheme</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/如何判断自己是不是有某些心理问题/" rel="next" title="如何判断自己是不是有某些心理问题">
+                <i class="fa fa-chevron-left"></i> 如何判断自己是不是有某些心理问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/05/初学编程（2）——Scheme的函数（procedure）/" rel="prev" title="初学编程（2）——Scheme的函数（procedure）">
+                初学编程（2）——Scheme的函数（procedure） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">陈权业</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到这里，这里有我分享的各种文章噢！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheme介绍"><span class="nav-number">1.</span> <span class="nav-text">Scheme介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、安装Scheme语言运行环境——Racket"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装Scheme语言运行环境——Racket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、执行Scheme程序"><span class="nav-number">1.2.</span> <span class="nav-text">二、执行Scheme程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Scheme是一个计算器"><span class="nav-number">1.3.</span> <span class="nav-text">二、Scheme是一个计算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、查看Racket提供的文档"><span class="nav-number">1.4.</span> <span class="nav-text">三、查看Racket提供的文档</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈权业</span>
+
+  
+</div>
+<a href="http://www.quanye.xyz">作者首页</a>，
+<a href="https://github.com/aizichen">GitHub</a>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

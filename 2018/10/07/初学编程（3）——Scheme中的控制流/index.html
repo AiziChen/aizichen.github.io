@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="编程,初学,scheme," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="控制流简介控制流是用来给程序做判断用的。打个比方如果你在写一个分享软件，那么就可能需要判断分享给新浪微博、QQ空间，还是微信朋友圈。 这就是控制流，不过控制流除了以上例子中的内容外，还有以下的内容： 练习1、写出一个早餐吃“甜点”，中餐吃“米饭和青菜炒肉”，晚餐吃“五谷粥”的函数 一、使用if来做简单的判断if语法为： 123(if [condition]    [condition成立(为#tr">
+<meta name="keywords" content="编程,初学,scheme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学编程（3）——Scheme中的控制流">
+<meta property="og:url" content="http://yoursite.com/2018/10/07/初学编程（3）——Scheme中的控制流/index.html">
+<meta property="og:site_name" content="陈权业的博客">
+<meta property="og:description" content="控制流简介控制流是用来给程序做判断用的。打个比方如果你在写一个分享软件，那么就可能需要判断分享给新浪微博、QQ空间，还是微信朋友圈。 这就是控制流，不过控制流除了以上例子中的内容外，还有以下的内容： 练习1、写出一个早餐吃“甜点”，中餐吃“米饭和青菜炒肉”，晚餐吃“五谷粥”的函数 一、使用if来做简单的判断if语法为： 123(if [condition]    [condition成立(为#tr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/10/07/初学编程（3）——Scheme中的控制流/REPL-IF.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/07/初学编程（3）——Scheme中的控制流/REPL-CONDITION-AND.png">
+<meta property="og:updated_time" content="2018-10-07T15:49:49.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学编程（3）——Scheme中的控制流">
+<meta name="twitter:description" content="控制流简介控制流是用来给程序做判断用的。打个比方如果你在写一个分享软件，那么就可能需要判断分享给新浪微博、QQ空间，还是微信朋友圈。 这就是控制流，不过控制流除了以上例子中的内容外，还有以下的内容： 练习1、写出一个早餐吃“甜点”，中餐吃“米饭和青菜炒肉”，晚餐吃“五谷粥”的函数 一、使用if来做简单的判断if语法为： 123(if [condition]    [condition成立(为#tr">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/07/初学编程（3）——Scheme中的控制流/REPL-IF.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/07/初学编程（3）——Scheme中的控制流/"/>
+
+
+
+
+
+  <title>初学编程（3）——Scheme中的控制流 | 陈权业的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈权业的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/初学编程（3）——Scheme中的控制流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈权业">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈权业的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初学编程（3）——Scheme中的控制流</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T22:55:34+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="控制流简介"><a href="#控制流简介" class="headerlink" title="控制流简介"></a>控制流简介</h2><p>控制流是用来给程序做判断用的。打个比方如果你在写一个分享软件，那么就可能需要判断分享给新浪微博、QQ空间，还是微信朋友圈。</p>
+<p>这就是控制流，不过控制流除了以上例子中的内容外，还有以下的内容：</p>
+<p><strong>练习1、写出一个早餐吃“甜点”，中餐吃“米饭和青菜炒肉”，晚餐吃“五谷粥”的函数</strong></p>
+<h3 id="一、使用if来做简单的判断"><a href="#一、使用if来做简单的判断" class="headerlink" title="一、使用if来做简单的判断"></a>一、使用if来做简单的判断</h3><p>if语法为：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">if</span></span> [<span class="name">condition</span>]</span><br><span class="line">    [<span class="name">condition成立</span>(<span class="name">为</span><span class="literal">#t</span>rue)时返回]</span><br><span class="line">    [<span class="name">condition不成立</span>(<span class="name">为</span><span class="literal">#f</span>alse)时返回])</span><br></pre></td></tr></table></figure>
+<p>练习1的答案（版本1）：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 今天老板打算包给我们吃的饭函数</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">eat</span> now-name)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"早餐"</span>)</span><br><span class="line">      <span class="string">"吃甜点"</span></span><br><span class="line">      (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"中餐"</span>)</span><br><span class="line">          <span class="string">"吃米饭和青菜炒肉"</span></span><br><span class="line">          (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"晚餐"</span>)</span><br><span class="line">              <span class="string">"吃五谷粥"</span></span><br><span class="line">              <span class="string">""</span>))))</span><br></pre></td></tr></table></figure>
+<p>接着我们运行它，然后在REPL中试着运行它，我们尝试向其中输入“早餐”“中餐”“晚餐”，看它会返回给我们什么样的结果。结果如下图所示：</p>
+<p><img src="/2018/10/07/初学编程（3）——Scheme中的控制流/REPL-IF.png" alt="REPL-IF-CONDITION"></p>
+<p>这个程序看起来嵌套层数很多，现在我们可以用来cond语法来写出另一个平滑嵌套的函数，我们把它称为<code>eat.v2</code>，代表着这是<code>eat</code>函数的第二个版本。</p>
+<h3 id="二、使用cond来做多层判断"><a href="#二、使用cond来做多层判断" class="headerlink" title="二、使用cond来做多层判断"></a>二、使用cond来做多层判断</h3><p>cond语法为：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cond</span></span></span><br><span class="line"> ([<span class="name">condition1</span>] [<span class="name">condition1成立</span>(<span class="name">为</span><span class="literal">#t</span>rue)时返回])</span><br><span class="line"> ([<span class="name">condition2</span>] [<span class="name">condition2成立</span>(<span class="name">为</span><span class="literal">#t</span>rue)时返回])</span><br><span class="line"> ([<span class="name">condition3</span>] [<span class="name">condition3成立</span>(<span class="name">为</span><span class="literal">#t</span>rue)时返回])</span><br><span class="line"> ...</span><br><span class="line"> (<span class="name"><span class="builtin-name">else</span></span> [<span class="name">以上所有的conditions都不成立</span>(<span class="name">均为</span><span class="literal">#f</span>alse)时返回]))</span><br></pre></td></tr></table></figure>
+<p>练习1的答案（版本2）：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 今天老板打算包给我们吃的饭函数，版本2</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">eat.v2</span> now-name)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span></span><br><span class="line">    ((<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"早餐"</span>)</span><br><span class="line">     <span class="string">"吃甜点"</span>)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"中餐"</span>)</span><br><span class="line">     <span class="string">"吃米饭和青菜炒肉"</span>)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"晚餐"</span>)</span><br><span class="line">     <span class="string">"吃五谷粥"</span>)</span><br><span class="line">    (<span class="name"><span class="builtin-name">else</span></span> <span class="string">""</span>)))</span><br></pre></td></tr></table></figure>
+<p>这样函数和前一个版本是一模一样的，不过它看起来是不是清晰了一些呢！</p>
+<h3 id="三、使用or-and语句来做所有的同类判断"><a href="#三、使用or-and语句来做所有的同类判断" class="headerlink" title="三、使用or/and语句来做所有的同类判断"></a>三、使用or/and语句来做所有的同类判断</h3><p>（1）or语句</p>
+<p><strong>练习2、在练习1的基础上添加英文选项</strong></p>
+<p>练习2的答案（版本3）：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 今天老板打算包给我们吃的饭函数，版本3</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">eat.v3</span> now-name)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span></span><br><span class="line">    ((<span class="name"><span class="builtin-name">or</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"早餐"</span>) (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"breakfast"</span>))</span><br><span class="line">     <span class="string">"吃甜点"</span>)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">or</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"中餐"</span>) (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"lunch"</span>))</span><br><span class="line">     <span class="string">"吃米饭和青菜炒肉"</span>)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">or</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"晚餐"</span>) (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"dinner"</span>))</span><br><span class="line">     <span class="string">"吃五谷粥"</span>)</span><br><span class="line">    (<span class="name"><span class="builtin-name">else</span></span> <span class="string">""</span>)))</span><br></pre></td></tr></table></figure>
+<p>（2）and语句</p>
+<p><strong>练习3、在练习1的基础上添加饿不饿选项，如果不饿，则不吃饭</strong></p>
+<p>练习3的答案（版本4）：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 今天老板打算包给我们吃的饭函数，版本4</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">eat.v4</span> now-name hungry)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span></span><br><span class="line">    ((<span class="name"><span class="builtin-name">and</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"早餐"</span>) hungry)</span><br><span class="line">     <span class="string">"吃甜点"</span>)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">and</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"中餐"</span>) hungry)</span><br><span class="line">     <span class="string">"吃米饭和青菜炒肉"</span>)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">and</span></span> (<span class="name"><span class="builtin-name">eq?</span></span> now-name <span class="string">"晚餐"</span>) hungry)</span><br><span class="line">     <span class="string">"吃五谷粥"</span>)</span><br><span class="line">    (<span class="name"><span class="builtin-name">else</span></span> <span class="string">"不吃饭"</span>)))</span><br></pre></td></tr></table></figure>
+<p>此时我们发现第二参数hungry是一个判断(condition)，它只有<code>成立</code>或<code>不成立</code>，那么什么值代表<code>成立</code>和<code>不成立</code>呢？答案是scheme提供了两个值代表它们，它们分别是<code>#t</code>和<code>#f</code>。</p>
+<p>那么此时我们试着传入这两个参数，看下会有什么结果。结果如下所示：</p>
+<p><img src="/2018/10/07/初学编程（3）——Scheme中的控制流/REPL-CONDITION-AND.png" alt="REPL-CONDITION-AND"></p>
+<p>那么这节我们讲了<code>if/cond/or/and</code>控制流语句。下节我们讲<code>循环和递归</code>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+ <div>
+  
+    ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束<i class="fa fa-heart"></i>感谢阅读------</div>
+    
+</div>
+  
+</div>
+ 
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/初学/" rel="tag"># 初学</a>
+          
+            <a href="/tags/scheme/" rel="tag"># scheme</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/05/初学编程（2）——Scheme的函数（procedure）/" rel="next" title="初学编程（2）——Scheme的函数（procedure）">
+                <i class="fa fa-chevron-left"></i> 初学编程（2）——Scheme的函数（procedure）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/07/初学编程（4）——Scheme循环与递归/" rel="prev" title="初学编程（4）——Scheme循环与递归">
+                初学编程（4）——Scheme循环与递归 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">陈权业</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到这里，这里有我分享的各种文章噢！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#控制流简介"><span class="nav-number">1.</span> <span class="nav-text">控制流简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用if来做简单的判断"><span class="nav-number">1.1.</span> <span class="nav-text">一、使用if来做简单的判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用cond来做多层判断"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用cond来做多层判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、使用or-and语句来做所有的同类判断"><span class="nav-number">1.3.</span> <span class="nav-text">三、使用or/and语句来做所有的同类判断</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈权业</span>
+
+  
+</div>
+<a href="http://www.quanye.xyz">作者首页</a>，
+<a href="https://github.com/aizichen">GitHub</a>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

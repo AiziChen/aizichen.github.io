@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="一、什么是函数，用处是什么一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。 二、制作需要的函数（1）制作自己想要的函数，专业的叫法为自定义函数，那么我们下面就来自定义一个属于我们自己的一些函数吧！ 在自定义函数之前需要了解一下变量：此处的变量和数学中的变量是同样的概念，不过它在计算机中有一个模型：一个变量会存着一个内存地址，这个内存地址会指">
+<meta name="description" content="一、什么是函数，用处是什么一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。 二、制作需要的函数（1）制作自己想要的函数，专业的叫法为自定义函数，那么我们下面就来自定义一个属于我们自己的一些函数吧！">
 <meta name="keywords" content="编程,初学,scheme">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初学编程（2）——Scheme的函数（procedure）">
 <meta property="og:url" content="http://yoursite.com/2018/10/05/初学编程（2）——Scheme的函数（procedure）/index.html">
 <meta property="og:site_name" content="权业的博客">
-<meta property="og:description" content="一、什么是函数，用处是什么一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。 二、制作需要的函数（1）制作自己想要的函数，专业的叫法为自定义函数，那么我们下面就来自定义一个属于我们自己的一些函数吧！ 在自定义函数之前需要了解一下变量：此处的变量和数学中的变量是同样的概念，不过它在计算机中有一个模型：一个变量会存着一个内存地址，这个内存地址会指">
+<meta property="og:description" content="一、什么是函数，用处是什么一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。 二、制作需要的函数（1）制作自己想要的函数，专业的叫法为自定义函数，那么我们下面就来自定义一个属于我们自己的一些函数吧！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/05/初学编程（2）——Scheme的函数（procedure）/REPL-VAR.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/05/初学编程（2）——Scheme的函数（procedure）/REPL-PROCEDURE.png">
-<meta property="og:updated_time" content="2018-10-07T15:57:00.000Z">
+<meta property="og:updated_time" content="2019-07-19T11:47:41.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初学编程（2）——Scheme的函数（procedure）">
-<meta name="twitter:description" content="一、什么是函数，用处是什么一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。 二、制作需要的函数（1）制作自己想要的函数，专业的叫法为自定义函数，那么我们下面就来自定义一个属于我们自己的一些函数吧！ 在自定义函数之前需要了解一下变量：此处的变量和数学中的变量是同样的概念，不过它在计算机中有一个模型：一个变量会存着一个内存地址，这个内存地址会指">
+<meta name="twitter:description" content="一、什么是函数，用处是什么一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。 二、制作需要的函数（1）制作自己想要的函数，专业的叫法为自定义函数，那么我们下面就来自定义一个属于我们自己的一些函数吧！">
 <meta name="twitter:image" content="http://yoursite.com/2018/10/05/初学编程（2）——Scheme的函数（procedure）/REPL-VAR.png">
 
 
@@ -334,7 +334,7 @@
 
       
         <h2 id="一、什么是函数，用处是什么"><a href="#一、什么是函数，用处是什么" class="headerlink" title="一、什么是函数，用处是什么"></a>一、什么是函数，用处是什么</h2><p>一个函数对应一个功能，如上节所讲的四则运算，其中的加（+）、减（-）、乘（*）、除（/）都分别是一个函数。</p>
-<h2 id="二、制作需要的函数"><a href="#二、制作需要的函数" class="headerlink" title="二、制作需要的函数"></a>二、制作需要的函数</h2><p>（1）制作自己想要的函数，专业的叫法为<strong>自定义函数</strong>，那么我们下面就来自定义一个属于我们自己的一些函数吧！</p>
+<h2 id="二、制作需要的函数"><a href="#二、制作需要的函数" class="headerlink" title="二、制作需要的函数"></a>二、制作需要的函数</h2><p>（1）制作自己想要的函数，专业的叫法为<strong>自定义函数</strong>，那么我们下面就来自定义一个属于我们自己的一些函数吧！<a id="more"></a></p>
 <p>在自定义函数之前需要了解一下变量：<br>此处的变量和数学中的变量是同样的概念，不过它在计算机中有一个模型：一个变量会存着一个内存地址，这个内存地址会指向一段内存区间。</p>
 <p>那么先来看下如何声明一个变量吧：</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 使用'define'关键字来声明变量</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> x <span class="number">10</span>)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> y <span class="number">20</span>)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> mouse <span class="string">"老鼠"</span>)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> z (<span class="name"><span class="builtin-name">+</span></span> x y))</span><br></pre></td></tr></table></figure>
